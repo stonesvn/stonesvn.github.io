@@ -42,4 +42,4 @@
 
 ## English guides
 
-The three English guides are maintained in source/guides.mjs and rendered by source/build-guides.mjs during node build.mjs. They are linked from the English homepage and included in sitemap.xml. Review the pinned v1.1.2 content and verification date when behavior changes. Generated pages are included by the existing Pages deployment.
+The English guides are maintained in source/guides.mjs and rendered by source/build-guides.mjs during node build.mjs. They are linked from the English homepage and included in sitemap.xml. Review the pinned v1.1.2 content and verification date when behavior changes. Generated pages are included by the existing Pages deployment.
