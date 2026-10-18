@@ -1,21 +1,27 @@
 # StoneSVN 项目主页
 
-不依赖构建工具的静态网站，可直接部署到 GitHub Pages。
+官网：https://stonesvn.github.io
 
-## 本地预览
+无运行时依赖的静态网站，使用 GitHub Pages 从 main 分支根目录发布。
 
-在此目录运行 `python3 -m http.server 8088 --bind 127.0.0.1`，访问 http://127.0.0.1:8088。
+## 修改和构建
 
-## 发布
+- 页面结构与简体中文文案：`source/template.html`
+- 其他语言翻译：`source/translations.json`
+- 样式：`style.css`
+- 截图切换、语言导航：`script.js`
+- 根入口的浏览器语言识别：`detect-language.js`
 
-将此目录内容推送至组织 `stonesvn` 下的公开仓库 `stonesvn.github.io`。在 Settings → Pages 中将 Source 设为 Deploy from a branch，选择 main 分支和 / (root)。
+修改源文件后运行 `node build.mjs`。提交生成的根入口、五种语言目录、robots.txt 和 sitemap.xml。源模板带有 noindex，生成页面移除此标记。
 
-主页：https://stonesvn.github.io
+本地预览：在此目录运行 `python3 -m http.server 8088 --bind 127.0.0.1`。
 
-当前下载链接对应 v1.0.3；发布新版本时同步修改 index.html 的版本标记与安装包链接。源码、文档和下载指向 firzen/StoneSVN，组织建立不需要迁移应用仓库。
+## 语言与 SEO
 
-截图来自应用仓库 docs/images，使用虚构项目数据。浅色/深色切换只切换截图预览。
+访问根地址时按浏览器语言顺序选择简体中文、繁体中文、英语、日语或韩语；其他语言回退到英语，不读取旧版本保存的语言偏好。旧的 `?lang=en` 链接仍可跳转。
 
-## 多语言
+每种语言都有稳定地址：`/zh-CN/`、`/zh-TW/`、`/en/`、`/ja/`、`/ko/`。直接打开指定语言地址不会再次按浏览器语言跳转，手动切换和页脚语言链接跳转到相应地址；未启用 JavaScript 时仍可阅读全部内容并通过页脚切换语言。
 
-提供简体中文、繁体中文、English、日本語、한국어。首次访问按浏览器语言选择，手动选择保存在本地；可通过 `?lang=en` 等参数分享指定语言。翻译维护在 `i18n.js`，截图保留中文应用界面。
+各页面包含静态翻译、独立标题与描述、canonical、双向 hreflang、Open Graph / Twitter 分享信息与 SoftwareApplication 结构化数据。根入口 canonical 指向 `/zh-CN/` 默认静态内容，作为 x-default 语言选择入口。sitemap.xml 列出五种语言页面。
+
+当前下载链接和结构化数据对应 v1.0.3；新版本发布时同步更新模板中的版本与下载链接、build.mjs 的 softwareVersion，然后重新生成。截图来自应用仓库 docs/images，使用虚构数据，保持中文应用界面。

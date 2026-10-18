@@ -1,5 +1,4 @@
-'use strict';
-const translations = {
+{
   "en": {
     "StoneSVN · 让每一次提交，心中有数": "StoneSVN · Commit with confidence",
     "跳转到正文": "Skip to content",
@@ -324,4 +323,4 @@ const translations = {
     "StoneSVN 是开源、跨平台的 SVN 桌面客户端。集中查看变更、审阅差异、选择提交，支持 Windows、macOS 和 Linux。": "StoneSVN은 Windows, macOS, Linux용 오픈 소스 SVN 데스크톱 클라이언트입니다. 변경 확인, Diff 검토, 커밋 선택을 한곳에서 처리하세요.",
     "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "오픈 소스 크로스 플랫폼 SVN 데스크톱 클라이언트. 변경부터 커밋까지 하나의 작업 공간에서."
   }
-};
+}
