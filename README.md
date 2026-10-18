@@ -2,7 +2,9 @@
 
 官网：https://stonesvn.github.io
 
-无运行时依赖的静态网站，使用 GitHub Pages 从 main 分支根目录发布。
+无运行时依赖的静态网站。源码在 main 分支维护，由 `.github/workflows/sync-release.yml` 构建并通过 GitHub Actions 部署到 Pages（`build_type: workflow`）。
+
+代码代理先阅读 [AGENTS.md](AGENTS.md)。应用仓库的[发布指南](https://github.com/firzen/StoneSVN/blob/main/docs/releasing.md)记录了正式发版入口与最终验收清单。
 
 ## 修改和构建
 
@@ -12,7 +14,7 @@
 - 截图切换、语言导航：`script.js`
 - 根入口的浏览器语言识别：`detect-language.js`
 
-修改源文件后运行 `node build.mjs`。提交生成的根入口、五种语言目录、robots.txt 和 sitemap.xml。源模板带有 noindex，生成页面移除此标记。
+修改源文件后运行 `node --test source/releases.test.cjs` 和 `node build.mjs`。提交生成的根入口、五种语言目录、robots.txt 和 sitemap.xml。源模板带有 noindex，生成页面移除此标记。
 
 本地预览：在此目录运行 `python3 -m http.server 8088 --bind 127.0.0.1`。
 
@@ -24,7 +26,7 @@
 
 各页面包含静态翻译、独立标题与描述、canonical、双向 hreflang、Open Graph / Twitter 分享信息与 SoftwareApplication 结构化数据。根入口默认提供完整英文内容，canonical 与 x-default 都指向 `/en/`；启用 JavaScript 时继续按浏览器语言自动匹配。sitemap.xml 列出五种语言页面。
 
-版本号与下载链接由 `releases.js` 自动读取 GitHub 最新正式版本。接口返回的 tag、发布页和实际安装包地址用于更新页面及结构化数据，无需为发版重新构建主页。未加载 JavaScript、API 不可用或对应安装包缺失时，按钮指向 GitHub 的 `/releases/latest` 页面，不保留旧版本链接。每个浏览器会话缓存 5 分钟以减少 API 请求；缓存到期后再次访问或返回页面会刷新。截图由应用源码和 docs/images/workspace-demo.js 的虚构数据生成，各语言分别截取浅色工作台、深色工作台与属性页，位于 assets/screenshots/，与页面语言、分享预览和主题切换同步。
+版本号与下载链接由 `releases.js` 自动读取 GitHub 最新正式版本。接口返回的 tag、发布页和实际安装包地址用于更新页面及结构化数据，无需手动修改主页版本号；正式版同步任务会自动重建静态更新说明和截图。未加载 JavaScript、API 不可用或对应安装包缺失时，按钮指向 GitHub 的 `/releases/latest` 页面，不保留旧版本链接。接口失败时保留静态版本元数据，旧缓存不能把新部署页面降回旧版本。每个浏览器会话缓存 5 分钟以减少 API 请求；缓存到期后再次访问或返回页面会刷新。截图由应用源码和 docs/images/workspace-demo.js 的虚构数据生成，各语言分别截取浅色工作台、深色工作台与属性页，位于 assets/screenshots/，与页面语言、分享预览和主题切换同步。
 
 ## 正式发布自动同步
 

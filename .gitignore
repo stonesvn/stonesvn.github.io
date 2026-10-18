@@ -1,0 +1,5 @@
+# Temporary application/tool checkouts used for localized captures
+.capture-app/
+.capture-tools/
+node_modules/
+*.log
