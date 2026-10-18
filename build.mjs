@@ -11,7 +11,7 @@ if(release && (!/^v[0-9]+\.[0-9]+\.[0-9]+$/.test(release.tag)||! /^[a-f0-9]{40}$
 const languages=['en','zh-CN','zh-TW','ja','ko'];
 const locales={'zh-CN':'zh_CN','zh-TW':'zh_TW',en:'en_US',ja:'ja_JP',ko:'ko_KR'};
 const names={'zh-CN':'简体中文','zh-TW':'繁體中文',en:'English',ja:'日本語',ko:'한국어'};
-const readmes={'zh-CN':'README.md','zh-TW':'README.zh-TW.md',en:'README.en.md',ja:'README.ja.md',ko:'README.ko.md'};
+const readmes={'zh-CN':'README.cn.md','zh-TW':'README.zh-TW.md',en:'README.md',ja:'README.ja.md',ko:'README.ko.md'};
 const titles={"zh-CN": "StoneSVN · 更顺手的 macOS SVN 客户端，支持全局忽略", "zh-TW": "StoneSVN · 更順手的 macOS SVN 用戶端，支援全域忽略", "en": "StoneSVN · SVN for macOS with Global Ignore | Windows & Linux", "ja": "StoneSVN · 共通の除外ルールで使いやすい macOS SVN クライアント", "ko": "StoneSVN · 전역 파일 제외를 지원하는 macOS SVN 클라이언트"};
 const escape=value=>value.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const alternates=languages.map(lang=>`<link rel="alternate" hreflang="${lang}" href="${origin}/${lang}/">`).join('\n')+`\n<link rel="alternate" hreflang="x-default" href="${origin}/en/">`;
@@ -31,6 +31,7 @@ function render(lang){
   .replace('href="style.css"','href="/style.css"').replace('src="script.js"','src="/script.js"')
   .replace(`value="${lang}"`,`value="${lang}" selected`)
   .replace('https://github.com/firzen/StoneSVN/blob/main/docs/user-guide.md',`https://github.com/firzen/StoneSVN/blob/main/${readmes[lang]}`);
+ html=html.replace('https://github.com/firzen/StoneSVN/blob/main/README.md#全局忽略',`https://github.com/firzen/StoneSVN/blob/main/${lang==='zh-CN'?'README.cn.md#全局忽略':'README.md#global-ignore-rules'}`);
  const url=`${origin}/${lang}/`;
  const description=html.match(/<meta name="description" content="([^"]*)"/)[1];
  const schema={'@context':'https://schema.org','@type':'SoftwareApplication',name:'StoneSVN',applicationCategory:'DeveloperApplication',operatingSystem:'Windows, macOS, Linux',inLanguage:lang,url,description,license:'https://opensource.org/license/mit',downloadUrl:'https://github.com/firzen/StoneSVN/releases/latest',image:`${origin}/assets/screenshots/${lang}-workspace-light.png`,...(release?{softwareVersion:release.version,datePublished:release.publishedAt}:{}),offers:{'@type':'Offer',price:'0',priceCurrency:'USD'}};
