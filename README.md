@@ -26,4 +26,12 @@
 
 版本号与下载链接由 `releases.js` 自动读取 GitHub 最新正式版本。接口返回的 tag、发布页和实际安装包地址用于更新页面及结构化数据，无需为发版重新构建主页。未加载 JavaScript、API 不可用或对应安装包缺失时，按钮指向 GitHub 的 `/releases/latest` 页面，不保留旧版本链接。每个浏览器会话缓存 5 分钟以减少 API 请求；缓存到期后再次访问或返回页面会刷新。截图由应用源码和 docs/images/workspace-demo.js 的虚构数据生成，各语言分别截取浅色工作台、深色工作台与属性页，位于 assets/screenshots/，与页面语言、分享预览和主题切换同步。
 
-重新截图：在应用仓库启动 `npm run dev -- --host 127.0.0.1`，在已安装 Playwright、Chrome 的环境执行 `node source/capture-screenshots.cjs`。每种语言使用独立浏览器上下文，不连接真实 SVN 工作副本。截图后重新执行 `node build.mjs`。
+## 正式发布自动同步
+
+应用仓库的 `Stable Release` 在四个平台检查和打包成功后才打标签并发布。本仓库 `Sync Release and Deploy` 每 5 分钟检查 Latest 正式版，有新版本才更新；GitHub 定时任务可能延迟。可在本仓库 Actions 手动运行立即同步，无需重发版本。任务无变更时跳过依赖安装、截图和部署。
+
+`source/release.json` 由流水线生成，记录版本、公开时间、源码 SHA 和五种语言摘要。`build.mjs` 把更新说明与版本结构化数据写入静态 HTML，禁用 JavaScript 时也能阅读。截图地址附带源码 SHA，主题切换同样保留该缓存标识。
+
+摘要源文件位于应用仓库 `docs/releases/vX.Y.Z.website.json`；截图脚本为 `scripts/capture-website.cjs`，使用 Playwright Chromium 和 `docs/images/workspace-demo.js` 的虚构数据，从发布标签渲染 1440×900 截图，不连接真实工作副本。每种语言包含浅色工作区、深色工作区和属性页，共 15 张。
+
+官网使用本仓库自身的 GITHUB_TOKEN 提交生成内容，并通过 deploy-pages 显式部署，不需要 deploy key 或个人令牌。Pages 必须设置为 GitHub Actions 发布。部署包只包含公开静态资源，不包含源码检出目录或自动化工具。普通 main 推送也会触发部署；并发维护导致推送冲突时下一次运行重试，禁止强推。

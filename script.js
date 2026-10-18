@@ -3,7 +3,7 @@ const screenshot = document.getElementById('workspace');
 const themes = document.querySelectorAll('[data-theme]');
 themes.forEach(button => button.addEventListener('click', () => {
   const language = document.documentElement.lang || 'en';
-  screenshot.src = `/assets/screenshots/${language}-workspace-${button.dataset.theme}.png`;
+  screenshot.src = `/assets/screenshots/${language}-workspace-${button.dataset.theme}.png${screenshot.dataset.release ? `?v=${screenshot.dataset.release}` : ''}`;
   themes.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
 }));
 const languageSelect = document.getElementById('language');

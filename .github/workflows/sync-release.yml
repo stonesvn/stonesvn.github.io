@@ -1,0 +1,139 @@
+name: Sync Release and Deploy
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-release-and-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    outputs:
+      deploy: ${{ steps.release.outputs.deploy }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Detect latest stable release
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          gh api repos/firzen/StoneSVN/releases/latest > "$RUNNER_TEMP/release.json"
+          tag=$(jq -r .tag_name "$RUNNER_TEMP/release.json")
+          [[ "$tag" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
+          test "$(jq -r .draft "$RUNNER_TEMP/release.json")" = false
+          test "$(jq -r .prerelease "$RUNNER_TEMP/release.json")" = false
+          current=$(jq -r '.tag // ""' source/release.json 2>/dev/null || true)
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          if [ "$tag" != "$current" ] || [ "$EVENT_NAME" = workflow_dispatch ]; then
+            echo "sync=true" >> "$GITHUB_OUTPUT"
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          elif [ "$EVENT_NAME" = push ]; then
+            echo "sync=false" >> "$GITHUB_OUTPUT"
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "sync=false" >> "$GITHUB_OUTPUT"
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-node@v4
+        if: steps.release.outputs.deploy == 'true'
+        with:
+          node-version: 'lts/*'
+      - uses: actions/checkout@v4
+        if: steps.release.outputs.sync == 'true'
+        with:
+          repository: firzen/StoneSVN
+          ref: main
+          path: .capture-tools
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        if: steps.release.outputs.sync == 'true'
+        with:
+          repository: firzen/StoneSVN
+          ref: ${{ steps.release.outputs.tag }}
+          path: .capture-app
+          persist-credentials: false
+      - name: Install deterministic capture tools
+        if: steps.release.outputs.sync == 'true'
+        run: |
+          npm ci --prefix .capture-tools
+          npm ci --prefix .capture-app
+          cd .capture-tools
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+      - name: Capture exact published app and generate release manifest
+        if: steps.release.outputs.sync == 'true'
+        env:
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+          SCREENSHOT_DIRECTORY: ${{ github.workspace }}/assets/screenshots
+        run: |
+          set -euo pipefail
+          npm run dev --prefix .capture-app -- --host 127.0.0.1 > "$RUNNER_TEMP/vite.log" 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          node .capture-tools/scripts/capture-website.cjs
+          cd .capture-app
+          notes="docs/releases/$RELEASE_TAG.website.json"
+          # Backfill only for tags published before automation was introduced.
+          if [ ! -f "$notes" ]; then cp "../.capture-tools/$notes" "$notes"; fi
+          node ../.capture-tools/scripts/website-release.cjs sync "$RELEASE_TAG" "$RUNNER_TEMP/release.json" "$(git rev-parse HEAD)" ../source/release.json
+      - name: Build static website
+        if: steps.release.outputs.deploy == 'true'
+        run: node build.mjs
+      - name: Validate localized pages and screenshots
+        if: steps.release.outputs.sync == 'true'
+        run: node .capture-tools/scripts/validate-website.cjs .
+      - name: Commit generated release content
+        if: steps.release.outputs.sync == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          set -euo pipefail
+          test "$(gh api repos/firzen/StoneSVN/releases/latest --jq .tag_name)" = "$RELEASE_TAG"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/screenshots source/release.json index.html en zh-CN zh-TW ja ko sitemap.xml robots.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Sync $RELEASE_TAG release notes and localized screenshots"
+            git push origin HEAD:main
+          fi
+      - name: Stage only public website files
+        if: steps.release.outputs.deploy == 'true'
+        run: |
+          mkdir -p "$RUNNER_TEMP/public"
+          cp index.html style.css script.js releases.js detect-language.js robots.txt sitemap.xml "$RUNNER_TEMP/public/"
+          cp -R assets en zh-CN zh-TW ja ko "$RUNNER_TEMP/public/"
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.release.outputs.deploy == 'true'
+        with:
+          path: ${{ runner.temp }}/public
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-22.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
