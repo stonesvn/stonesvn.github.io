@@ -9,7 +9,7 @@ const languages=['en','zh-CN','zh-TW','ja','ko'];
 const locales={'zh-CN':'zh_CN','zh-TW':'zh_TW',en:'en_US',ja:'ja_JP',ko:'ko_KR'};
 const names={'zh-CN':'简体中文','zh-TW':'繁體中文',en:'English',ja:'日本語',ko:'한국어'};
 const readmes={'zh-CN':'README.md','zh-TW':'README.zh-TW.md',en:'README.en.md',ja:'README.ja.md',ko:'README.ko.md'};
-const titles={'zh-CN':'StoneSVN · 免费开源 SVN 客户端，支持 Windows、macOS 和 Linux','zh-TW':'StoneSVN · 免費開源 SVN 用戶端，支援 Windows、macOS 和 Linux',en:'StoneSVN · Free Open-Source SVN Client for Windows, macOS & Linux',ja:'StoneSVN · Windows・macOS・Linux 対応の無料 SVN クライアント',ko:'StoneSVN · Windows, macOS, Linux용 무료 오픈 소스 SVN 클라이언트'};
+const titles={"zh-CN": "StoneSVN · 更顺手的 macOS SVN 客户端，支持全局忽略", "zh-TW": "StoneSVN · 更順手的 macOS SVN 用戶端，支援全域忽略", "en": "StoneSVN · SVN for macOS with Global Ignore | Windows & Linux", "ja": "StoneSVN · 共通の除外ルールで使いやすい macOS SVN クライアント", "ko": "StoneSVN · 전역 파일 제외를 지원하는 macOS SVN 클라이언트"};
 const escape=value=>value.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const alternates=languages.map(lang=>`<link rel="alternate" hreflang="${lang}" href="${origin}/${lang}/">`).join('\n')+`\n<link rel="alternate" hreflang="x-default" href="${origin}/en/">`;
 function render(lang){
