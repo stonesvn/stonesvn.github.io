@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    timeout-minutes: 20
     permissions:
       contents: write
     outputs:
@@ -48,6 +49,19 @@ jobs:
           else
             echo "sync=false" >> "$GITHUB_OUTPUT"
             echo "deploy=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Keep release synchronization active during long release gaps
+        if: github.event_name == 'schedule' && steps.release.outputs.sync != 'true'
+        run: |
+          set -euo pipefail
+          # Public repositories lose scheduled workflows after 60 inactive days:
+          # https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule
+          last_commit=$(git log -1 --format=%ct)
+          if [ "$(( $(date +%s) - last_commit ))" -ge 2592000 ]; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit --allow-empty -m "Keep automatic release synchronization active"
+            git push origin HEAD:main
           fi
       - uses: actions/setup-node@v4
         if: steps.release.outputs.deploy == 'true'
