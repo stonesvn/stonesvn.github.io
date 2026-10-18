@@ -5,7 +5,6 @@
     "功能": "Features",
     "下载": "Download",
     "文档": "Docs",
-    "v1.0.3 现已发布": "v1.0.3 is here",
     "让每一次提交，": "Every change.",
     "心中有数。": "Commit with confidence.",
     "一个清晰、从容的 SVN 工作台。": "A clear, calm workspace for SVN.",
@@ -53,7 +52,6 @@
     "适用于 x86_64 / amd64 设备": "For x86_64 / amd64 devices",
     "下载 AppImage": "Download AppImage",
     "使用系统提供的 SVN 命令行工具": "Uses your system’s SVN command-line tool",
-    "当前版本 v1.0.3": "Current version v1.0.3",
     "更新日志与所有安装包 ↗": "Release notes & all downloads ↗",
     "开始之前": "Before you begin",
     "StoneSVN 需要本机安装 SVN CLI。首次启动会自动查找，也可以在设置中指定路径。macOS 安装包尚未经过苹果公证；首次打开若被拦截，请在「系统设置 → 隐私与安全性」中选择「仍要打开」。": "StoneSVN requires a local SVN CLI installation. It is detected on first launch, or you can set its path in Settings. macOS builds are not notarized by Apple. If opening is blocked, choose Open Anyway in System Settings → Privacy & Security.",
@@ -78,7 +76,11 @@
     "StoneSVN 工作台：左侧切换多个项目，中间查看变更文件，右侧审阅文本差异": "StoneSVN workspace: projects on the left, changed files in the center, and text diffs on the right",
     "StoneSVN 属性页，展示文件树、文件信息和 SVN 属性编辑": "StoneSVN properties view with file tree, file information, and SVN property editing",
     "StoneSVN 是开源、跨平台的 SVN 桌面客户端。集中查看变更、审阅差异、选择提交，支持 Windows、macOS 和 Linux。": "StoneSVN is an open-source SVN desktop client for Windows, macOS, and Linux. Review changes, inspect diffs, and choose what to commit in one workspace.",
-    "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "An open-source, cross-platform SVN desktop client. One workspace, from changes to commits."
+    "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "An open-source, cross-platform SVN desktop client. One workspace, from changes to commits.",
+    "{version} 现已发布": "{version} is here",
+    "最新正式版已发布": "Latest stable release",
+    "当前版本 {version}": "Current version {version}",
+    "最新正式版本": "Latest stable version"
   },
   "zh-TW": {
     "StoneSVN · 让每一次提交，心中有数": "StoneSVN · 讓每一次提交，心中有數",
@@ -86,7 +88,6 @@
     "功能": "功能",
     "下载": "下載",
     "文档": "文件",
-    "v1.0.3 现已发布": "v1.0.3 現已發布",
     "让每一次提交，": "讓每一次提交，",
     "心中有数。": "心中有數。",
     "一个清晰、从容的 SVN 工作台。": "一個清晰、從容的 SVN 工作台。",
@@ -134,7 +135,6 @@
     "适用于 x86_64 / amd64 设备": "適用於 x86_64 / amd64 裝置",
     "下载 AppImage": "下載 AppImage",
     "使用系统提供的 SVN 命令行工具": "使用系統提供的 SVN 命令列工具",
-    "当前版本 v1.0.3": "目前版本 v1.0.3",
     "更新日志与所有安装包 ↗": "更新日誌與所有安裝套件 ↗",
     "开始之前": "開始之前",
     "StoneSVN 需要本机安装 SVN CLI。首次启动会自动查找，也可以在设置中指定路径。macOS 安装包尚未经过苹果公证；首次打开若被拦截，请在「系统设置 → 隐私与安全性」中选择「仍要打开」。": "StoneSVN 需要本機安裝 SVN CLI。首次啟動會自動尋找，也可以在設定中指定路徑。macOS 安裝套件尚未經過 Apple 公證；首次開啟若遭阻擋，請在「系統設定 → 隱私權與安全性」選擇「強制打開」。",
@@ -159,7 +159,11 @@
     "StoneSVN 工作台：左侧切换多个项目，中间查看变更文件，右侧审阅文本差异": "StoneSVN 工作台：左側切換多個專案，中間檢視變更檔案，右側審閱文字差異",
     "StoneSVN 属性页，展示文件树、文件信息和 SVN 属性编辑": "StoneSVN 屬性頁，顯示檔案樹、檔案資訊和 SVN 屬性編輯",
     "StoneSVN 是开源、跨平台的 SVN 桌面客户端。集中查看变更、审阅差异、选择提交，支持 Windows、macOS 和 Linux。": "StoneSVN 是開源、跨平台的 SVN 桌面用戶端。集中檢視變更、審閱差異、選擇提交，支援 Windows、macOS 和 Linux。",
-    "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "開源、跨平台的 SVN 桌面用戶端。一個工作台，從變更到提交。"
+    "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "開源、跨平台的 SVN 桌面用戶端。一個工作台，從變更到提交。",
+    "{version} 现已发布": "{version} 現已發布",
+    "最新正式版已发布": "最新正式版已發布",
+    "当前版本 {version}": "目前版本 {version}",
+    "最新正式版本": "最新正式版本"
   },
   "ja": {
     "StoneSVN · 让每一次提交，心中有数": "StoneSVN · 納得してコミット",
@@ -167,7 +171,6 @@
     "功能": "機能",
     "下载": "ダウンロード",
     "文档": "ドキュメント",
-    "v1.0.3 现已发布": "v1.0.3 公開中",
     "让每一次提交，": "一つひとつの変更を、",
     "心中有数。": "納得してコミット。",
     "一个清晰、从容的 SVN 工作台。": "SVN の作業を、すっきりと。",
@@ -215,7 +218,6 @@
     "适用于 x86_64 / amd64 设备": "x86_64 / amd64 デバイス向け",
     "下载 AppImage": "AppImage をダウンロード",
     "使用系统提供的 SVN 命令行工具": "システムの SVN コマンドラインツールを使用",
-    "当前版本 v1.0.3": "現在のバージョン v1.0.3",
     "更新日志与所有安装包 ↗": "リリースノートと全ダウンロード ↗",
     "开始之前": "ご利用の前に",
     "StoneSVN 需要本机安装 SVN CLI。首次启动会自动查找，也可以在设置中指定路径。macOS 安装包尚未经过苹果公证；首次打开若被拦截，请在「系统设置 → 隐私与安全性」中选择「仍要打开」。": "StoneSVN にはローカルの SVN CLI が必要です。初回起動時に自動検出し、設定でパスを指定することもできます。macOS 版は Apple の公証を受けていません。起動がブロックされた場合は「システム設定 → プライバシーとセキュリティ」で「このまま開く」を選択してください。",
@@ -240,7 +242,11 @@
     "StoneSVN 工作台：左侧切换多个项目，中间查看变更文件，右侧审阅文本差异": "StoneSVN の作業画面：左にプロジェクト、中央に変更ファイル、右にテキスト差分",
     "StoneSVN 属性页，展示文件树、文件信息和 SVN 属性编辑": "ファイルツリー、ファイル情報、SVN 属性の編集画面",
     "StoneSVN 是开源、跨平台的 SVN 桌面客户端。集中查看变更、审阅差异、选择提交，支持 Windows、macOS 和 Linux。": "StoneSVN は Windows、macOS、Linux に対応するオープンソースの SVN デスクトップクライアント。変更の確認、差分のレビュー、コミット対象の選択を一か所で。",
-    "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "オープンソースでクロスプラットフォームの SVN クライアント。変更からコミットまで、一つのワークスペースで。"
+    "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "オープンソースでクロスプラットフォームの SVN クライアント。変更からコミットまで、一つのワークスペースで。",
+    "{version} 现已发布": "{version} 公開中",
+    "最新正式版已发布": "最新の安定版を公開中",
+    "当前版本 {version}": "現在のバージョン {version}",
+    "最新正式版本": "最新の安定版"
   },
   "ko": {
     "StoneSVN · 让每一次提交，心中有数": "StoneSVN · 확신을 담은 커밋",
@@ -248,7 +254,6 @@
     "功能": "기능",
     "下载": "다운로드",
     "文档": "문서",
-    "v1.0.3 现已发布": "v1.0.3 출시",
     "让每一次提交，": "모든 변경을,",
     "心中有数。": "확신 있게 커밋하세요.",
     "一个清晰、从容的 SVN 工作台。": "SVN 작업을 위한 명확하고 차분한 공간.",
@@ -296,7 +301,6 @@
     "适用于 x86_64 / amd64 设备": "x86_64 / amd64 기기용",
     "下载 AppImage": "AppImage 다운로드",
     "使用系统提供的 SVN 命令行工具": "시스템의 SVN 명령줄 도구 사용",
-    "当前版本 v1.0.3": "현재 버전 v1.0.3",
     "更新日志与所有安装包 ↗": "릴리스 노트 및 모든 설치 파일 ↗",
     "开始之前": "시작하기 전에",
     "StoneSVN 需要本机安装 SVN CLI。首次启动会自动查找，也可以在设置中指定路径。macOS 安装包尚未经过苹果公证；首次打开若被拦截，请在「系统设置 → 隐私与安全性」中选择「仍要打开」。": "StoneSVN을 사용하려면 로컬 SVN CLI가 필요합니다. 처음 실행할 때 자동으로 찾거나 설정에서 경로를 지정할 수 있습니다. macOS 설치 파일은 Apple 공증을 받지 않았습니다. 실행이 차단되면 ‘시스템 설정 → 개인정보 보호 및 보안’에서 ‘확인 없이 열기’를 선택하세요.",
@@ -321,6 +325,10 @@
     "StoneSVN 工作台：左侧切换多个项目，中间查看变更文件，右侧审阅文本差异": "StoneSVN 작업 공간: 왼쪽 프로젝트, 가운데 변경 파일, 오른쪽 텍스트 Diff",
     "StoneSVN 属性页，展示文件树、文件信息和 SVN 属性编辑": "파일 트리, 파일 정보, SVN 속성 편집 화면",
     "StoneSVN 是开源、跨平台的 SVN 桌面客户端。集中查看变更、审阅差异、选择提交，支持 Windows、macOS 和 Linux。": "StoneSVN은 Windows, macOS, Linux용 오픈 소스 SVN 데스크톱 클라이언트입니다. 변경 확인, Diff 검토, 커밋 선택을 한곳에서 처리하세요.",
-    "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "오픈 소스 크로스 플랫폼 SVN 데스크톱 클라이언트. 변경부터 커밋까지 하나의 작업 공간에서."
+    "开源、跨平台的 SVN 桌面客户端。一个工作台，从变更到提交。": "오픈 소스 크로스 플랫폼 SVN 데스크톱 클라이언트. 변경부터 커밋까지 하나의 작업 공간에서.",
+    "{version} 现已发布": "{version} 출시",
+    "最新正式版已发布": "최신 안정 버전 출시",
+    "当前版本 {version}": "현재 버전 {version}",
+    "最新正式版本": "최신 안정 버전"
   }
 }

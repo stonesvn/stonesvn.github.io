@@ -24,6 +24,6 @@
 
 各页面包含静态翻译、独立标题与描述、canonical、双向 hreflang、Open Graph / Twitter 分享信息与 SoftwareApplication 结构化数据。根入口默认提供完整英文内容，canonical 与 x-default 都指向 `/en/`；启用 JavaScript 时继续按浏览器语言自动匹配。sitemap.xml 列出五种语言页面。
 
-当前下载链接和结构化数据对应 v1.0.3；新版本发布时同步更新模板中的版本与下载链接、build.mjs 的 softwareVersion，然后重新生成。截图由应用源码和 docs/images/workspace-demo.js 的虚构数据生成，各语言分别截取浅色工作台、深色工作台与属性页，位于 assets/screenshots/，与页面语言、分享预览和主题切换同步。
+版本号与下载链接由 `releases.js` 自动读取 GitHub 最新正式版本。接口返回的 tag、发布页和实际安装包地址用于更新页面及结构化数据，无需为发版重新构建主页。未加载 JavaScript、API 不可用或对应安装包缺失时，按钮指向 GitHub 的 `/releases/latest` 页面，不保留旧版本链接。每个浏览器会话缓存 5 分钟以减少 API 请求；缓存到期后再次访问或返回页面会刷新。截图由应用源码和 docs/images/workspace-demo.js 的虚构数据生成，各语言分别截取浅色工作台、深色工作台与属性页，位于 assets/screenshots/，与页面语言、分享预览和主题切换同步。
 
 重新截图：在应用仓库启动 `npm run dev -- --host 127.0.0.1`，在已安装 Playwright、Chrome 的环境执行 `node source/capture-screenshots.cjs`。每种语言使用独立浏览器上下文，不连接真实 SVN 工作副本。截图后重新执行 `node build.mjs`。
