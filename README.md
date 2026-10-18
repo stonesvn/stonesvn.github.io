@@ -32,7 +32,7 @@
 
 `source/release.json` 由流水线生成，记录版本、公开时间、源码 SHA 和五种语言摘要。`build.mjs` 把更新说明与版本结构化数据写入静态 HTML，禁用 JavaScript 时也能阅读。截图地址附带源码 SHA，主题切换同样保留该缓存标识。
 
-摘要源文件位于应用仓库 `docs/releases/vX.Y.Z.website.json`；截图脚本为 `scripts/capture-website.cjs`，使用 Playwright Chromium 和 `docs/images/workspace-demo.js` 的虚构数据，从发布标签渲染 1440×900 截图，不连接真实工作副本。每种语言包含浅色工作区、深色工作区和属性页，共 15 张。
+摘要源文件位于应用仓库 `docs/releases/vX.Y.Z.website.json`；截图脚本为 `scripts/capture-website.cjs`，使用 Playwright Chromium 和 `docs/images/workspace-demo.js` 的虚构数据，截图脚本和浏览器依赖也取自发布标签，从固定源码渲染 1440×900 截图（v1.1.2 使用固定提交的兼容脚本），不连接真实工作副本。每种语言包含浅色工作区、深色工作区和属性页，共 15 张。
 
 官网使用本仓库自身的 GITHUB_TOKEN 提交生成内容，并通过 deploy-pages 显式部署，不需要 deploy key 或个人令牌。Pages 必须设置为 GitHub Actions 发布。部署包只包含公开静态资源，不包含源码检出目录或自动化工具。普通 main 推送也会触发部署；并发维护导致推送冲突时下一次运行重试，禁止强推。
 
