@@ -126,7 +126,9 @@ jobs:
           node "../$TOOLS_DIRECTORY/scripts/website-release.cjs" sync "$RELEASE_TAG" "$RUNNER_TEMP/release.json" "$(git rev-parse HEAD)" ../source/release.json
       - name: Build static website
         if: steps.release.outputs.deploy == 'true'
-        run: node build.mjs
+        run: |
+          node --test source/releases.test.cjs
+          node build.mjs
       - name: Validate localized pages and screenshots
         if: steps.release.outputs.sync == 'true'
         env:

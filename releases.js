@@ -7,6 +7,20 @@
   const cacheKey = 'stonesvn-latest-stable-v1';
   const cacheLifetime = 5 * 60 * 1000;
   let pending;
+  let staticVersion;
+  try { staticVersion = JSON.parse(document.querySelector('script[type="application/ld+json"]')?.textContent || '{}').softwareVersion; } catch {}
+  function parts(version) {
+    return typeof version === 'string' && /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(version)
+      ? version.replace(/^v/, '').split('.').map(BigInt) : null;
+  }
+  function olderThanPage(release) {
+    const candidate = parts(release.tag), current = parts(staticVersion);
+    if (!candidate || !current) return false;
+    for (let i = 0; i < 3; i++) {
+      if (candidate[i] !== current[i]) return candidate[i] < current[i];
+    }
+    return false;
+  }
   function releaseURL(value, prefix) {
     try {
       const url = new URL(value);
@@ -14,7 +28,7 @@
     } catch { return null; }
   }
   function normalize(value) {
-    if (!value || value.draft !== false || value.prerelease !== false || typeof value.tag_name !== 'string' || !value.tag_name.trim()) return null;
+    if (!value || value.draft !== false || value.prerelease !== false || !parts(value.tag_name)) return null;
     const url = releaseURL(value.html_url, 'tag');
     if (!url || !Array.isArray(value.assets)) return null;
     return {
@@ -63,7 +77,8 @@
     if (schema) {
       try {
         const data = JSON.parse(schema.textContent);
-        delete data.softwareVersion;
+        if (staticVersion) data.softwareVersion = staticVersion;
+        else delete data.softwareVersion;
         data.downloadUrl = latest;
         schema.textContent = JSON.stringify(data);
       } catch { /* Preserve the remaining structured data. */ }
@@ -76,7 +91,7 @@
         const cached = JSON.parse(sessionStorage.getItem(cacheKey) || 'null');
         if (cached && Date.now() >= cached.at && Date.now() - cached.at < cacheLifetime) {
           const release = normalize(cached.data);
-          if (release) { apply(release); return; }
+          if (release && !olderThanPage(release)) { apply(release); return; }
         }
       } catch { /* Storage can be unavailable. Fetch directly in that case. */ }
       const controller = new AbortController();
@@ -86,7 +101,7 @@
         if (!response.ok) { fallback(); return; }
         const data = await response.json();
         const release = normalize(data);
-        if (!release) { fallback(); return; }
+        if (!release || olderThanPage(release)) { fallback(); return; }
         apply(release);
         try { sessionStorage.setItem(cacheKey, JSON.stringify({at: Date.now(), data})); } catch { /* No cache required. */ }
       } catch { fallback(); }
