@@ -1,6 +1,7 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
+import {buildGuides,guideSection,guideSitemap} from './source/build-guides.mjs';
 const directory=path.dirname(fileURLToPath(import.meta.url));
 const template=await readFile(path.join(directory,'source/template.html'),'utf8');
 const translations=JSON.parse(await readFile(path.join(directory,'source/translations.json'),'utf8'));
@@ -51,6 +52,7 @@ function render(lang){
   html=html.replace(/(\/assets\/screenshots\/[^" ]+\.png)/g,`$1?v=${release.sourceSha}`);
   html=html.replace('id="workspace"',`id="workspace" data-release="${release.sourceSha}"`);
  }
+ if(lang==='en')html=html.replace('</main>',`${guideSection}</main>`);
  return html;
 }
 for(const language of languages){await mkdir(path.join(directory,language),{recursive:true});await writeFile(path.join(directory,language,'index.html'),render(language));}
@@ -59,6 +61,7 @@ for(const language of languages){await mkdir(path.join(directory,language),{recu
 const entry=render('en').replace('<meta charset="utf-8">','<meta charset="utf-8"><script src="/detect-language.js"></script>');
 await writeFile(path.join(directory,'index.html'),entry);
 const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${languages.map(lang=>`<url><loc>${origin}/${lang}/</loc>${languages.map(other=>`<xhtml:link rel="alternate" hreflang="${other}" href="${origin}/${other}/"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${origin}/en/"/></url>`).join('\n')}\n</urlset>\n`;
-await writeFile(path.join(directory,'sitemap.xml'),sitemap);
+await buildGuides(directory);
+await writeFile(path.join(directory,'sitemap.xml'),sitemap.replace('</urlset>',`${guideSitemap}\n</urlset>`));
 await writeFile(path.join(directory,'robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 console.log('Generated five static language pages, browser language entry, and sitemap.');

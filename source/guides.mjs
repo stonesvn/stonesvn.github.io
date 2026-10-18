@@ -1,0 +1,37 @@
+export const guides = [
+  {
+    slug: 'svn-client-macos',
+    title: 'An open-source SVN client for macOS, Windows and Linux',
+    description: 'Use StoneSVN to review SVN working copies, select files to commit and stash text changes. Installation requirements and current limits explained.',
+    body: `<p>StoneSVN is a free, MIT-licensed Subversion desktop client for macOS, Windows and Linux. It uses your locally installed SVN command-line tool. Its main workflow is to open a working copy, review changes and choose the files or directories to commit.</p>
+<h2>What can I do with StoneSVN?</h2><p>Keep multiple working copies in one project sidebar, inspect text diffs and image previews, browse commit and file history, and edit SVN properties. Commit drafts and selections stay with each project during the session. Local stashes can temporarily save selected text hunks when part of a change is not ready.</p>
+<h2>How do I get started on a Mac?</h2><ol><li>Install an SVN CLI and check that <code>svn --version --quiet</code> works.</li><li>Download the official installer for your chip: aarch64 for Apple Silicon or x64 for Intel.</li><li>Open StoneSVN and let it detect SVN, or select the executable in Settings.</li><li>Open an existing working copy or check out a repository. Review the changed files before selecting a commit.</li></ol><p>macOS builds are ad-hoc signed and are not notarized. First-launch details are in the <a href="https://github.com/firzen/StoneSVN/blob/main/docs/macos-distribution.md">macOS distribution guide</a>. Managed Macs may require help from your IT administrator.</p>
+<h2>Can I use an existing SVN working copy?</h2><p>Yes. Select your existing local working copy; there is no StoneSVN-specific repository conversion. Repository access still depends on your SVN installation, credentials and network. Before moving an important workflow, test on a separate working copy and keep a backup of uncommitted work.</p>
+<h2>Does it replace every feature of another SVN client?</h2><p>StoneSVN is useful for day-to-day review, selected commits and local stashing. General Merge, Switch and line-by-line Blame interfaces are not available. Use another SVN client or the command line for those tasks. Local stashes are application-managed and do not interoperate with native SVN shelves.</p>
+<h2>Where does the project come from?</h2><p>StoneSVN is developed from <a href="https://github.com/wustites/OrcaSVN">OrcaSVN</a>, using Tauri, Rust and Vue 3. Source code and installers are public. This guide describes StoneSVN's own behavior and does not claim performance advantages over other clients.</p>`
+  },
+  {
+    slug: 'svn-global-ignore',
+    title: 'Ignore logs and generated files across SVN working copies',
+    description: 'Configure StoneSVN global file filters with examples for logs, .DS_Store and node_modules, and understand how they differ from SVN ignore properties.',
+    body: `<p>StoneSVN lets you configure one set of local file filters for all working copies. Use this when logs, generated files or dependency folders repeatedly clutter your review. The filters belong to StoneSVN; they do not change SVN repository properties.</p>
+<h2>How do I enable global file filters?</h2><ol><li>Open Settings → File Filters.</li><li>Enable filtering and enter one pattern per line.</li><li>Return to a working copy and refresh the list.</li><li>Check that the intended files are hidden and that files you need to commit remain visible.</li></ol>
+<h2>Example patterns</h2><pre><code>.DS_Store
+*.log
+**/node_modules</code></pre><p><code>.DS_Store</code> matches that filename at any depth. <code>*.log</code> matches log filenames. <code>**/node_modules</code> matches dependency directories and their contents. Use patterns that fit your repository; a log file can be intentional project data.</p>
+<h2>How do the wildcards work?</h2><p><code>*</code> does not cross a directory separator, <code>?</code> matches one character, and <code>**</code> can cross directories. Names without a slash can match at any depth. Patterns containing a slash are relative to each working-copy root. Negation with <code>!</code> is not supported.</p>
+<h2>Is this the same as svn:ignore or svn:global-ignores?</h2><p>No. StoneSVN applies its own filters locally. It does not write <code>svn:ignore</code> or <code>svn:global-ignores</code>, and other SVN tools will not inherit these settings. If your team needs shared repository rules, manage the appropriate SVN properties and commit those property changes separately.</p><p>A pattern naming <code>.gitignore</code> hides that file itself; it does not import Git ignore rules from its contents.</p>
+<h2>What happens when I add or commit files?</h2><p>StoneSVN checks the selected scope when adding files or committing. If a recursively added directory includes filtered items, add the intended files individually or adjust the filters. Filtering does not remove a file from version control, delete it from disk or undo a previous commit.</p>`
+  },
+  {
+    slug: 'svn-stash-selected-hunks',
+    title: 'Stash selected SVN text changes with StoneSVN',
+    description: 'Save part of an unfinished SVN text change locally, keep other edits in your working copy, and restore the stash when you resume the task.',
+    body: `<p>StoneSVN can stash selected text hunks from a working copy. This helps when one file contains changes for two tasks: temporarily save the unfinished part, keep the remaining edits available for review, and restore the saved work later.</p>
+<h2>How do I save only part of a change?</h2><ol><li>Open the working copy and review the current diff.</li><li>Open Stash and choose Create Stash.</li><li>Select the text files and hunks you want to set aside. Unversioned files and directories are selected as whole files.</li><li>Give the stash a recognizable name.</li><li>Choose Save and Remove from Working Copy, then inspect the remaining diff before committing anything.</li></ol><p>Selected changes are removed after saving; unselected edits remain. This is local stashing, not a command to commit selected lines directly to the repository.</p>
+<h2>How do I restore the saved changes?</h2><p>Return to the original working-copy path. Apply restores the stash and retains its record. Pop and Delete removes the record after successful application. Inspect the resulting diff. If application fails, inspect the working copy before retrying.</p>
+<h2>What can this flow save?</h2><p>It supports selected text hunks and separately stored unversioned files. Conflicted versioned content, property-only changes and non-text versioned changes are outside this flow. Follow the actual preview rather than assuming every file can be stashed.</p>
+<h2>Are stashes shared with my team?</h2><p>No. Stashes are stored locally by working-copy path, are not commits, and do not automatically follow a moved working copy. They are not interoperable with SVN's native shelves or a checkpoint history from another client.</p>
+<h2>Can I export a stash as a patch?</h2><p>Copy or export includes only the text-patch portion. Separately stored unversioned file content is omitted, so a stash containing only unversioned files may have no exportable patch. Back up those files separately when transferring work. Deleting application data may erase local stashes; use commits or independent backups for important work.</p>`
+  }
+];

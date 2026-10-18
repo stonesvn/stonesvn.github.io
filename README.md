@@ -37,3 +37,7 @@
 官网使用本仓库自身的 GITHUB_TOKEN 提交生成内容，并通过 deploy-pages 显式部署，不需要 deploy key 或个人令牌。Pages 必须设置为 GitHub Actions 发布。部署包只包含公开静态资源，不包含源码检出目录或自动化工具。普通 main 推送也会触发部署；并发维护导致推送冲突时下一次运行重试，禁止强推。
 
 [GitHub 会停用 60 天没有仓库活动的公开仓库定时任务](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)。为保持长期自动同步，定时任务仅在官网连续 30 天无提交时创建一次空维护提交，不修改页面或触发部署。
+
+## English guides
+
+The three English guides are maintained in source/guides.mjs and rendered by source/build-guides.mjs during node build.mjs. They are linked from the English homepage and included in sitemap.xml. Review the pinned v1.1.2 content and verification date when behavior changes. Generated pages are included by the existing Pages deployment.
