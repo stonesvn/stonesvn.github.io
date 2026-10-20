@@ -1,48 +1,48 @@
 {
-  "tag": "v1.1.4",
-  "version": "1.1.4",
-  "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.4",
-  "publishedAt": "2026-10-20T08:55:29Z",
-  "sourceSha": "95bbf16886e9c079b49047d83b118a1243fa5950",
+  "tag": "v1.1.5",
+  "version": "1.1.5",
+  "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.5",
+  "publishedAt": "2026-10-20T12:24:00Z",
+  "sourceSha": "76f88890a663d21fdec0fe3178ba0f0f0fae513e",
   "notes": {
     "en": {
-      "title": "Commit review and adjustable diff text",
+      "title": "Accurate incoming updates and SSL status checks",
       "items": [
-        "Keep commit output visible after committing instead of returning automatically to Workspace.",
-        "Revert with an impact preview, open file history, or double-click a commit file to compare; hide unsupported actions.",
-        "Adjust diff text with minus/plus buttons from 10 to 28 pixels and remember the size across views and restarts."
+        "Detect real incoming file and property changes without counting commits already present locally.",
+        "Reuse saved server TLS and certificate settings during remote status checks.",
+        "Show failed checks separately from no updates, and keep partial XML out of SVN error messages."
       ]
     },
     "zh-CN": {
-      "title": "提交审阅与差异字号调节",
+      "title": "准确识别远端更新与修复 SSL 状态检查",
       "items": [
-        "提交后保留结果，不再自动返回工作区。",
-        "提交列表支持还原预览、文件追溯与双击对比，不支持的操作直接隐藏。",
-        "差异字号支持通过「− / +」在 10–28px 间调整，跨视图及重启后保留设置。"
+        "根据实际文件和属性变化提示更新，不再把本地已有的提交计入待更新记录。",
+        "远端状态检查正确使用已保存的服务器 TLS 和证书设置。",
+        "检查失败与没有更新分别显示，SVN 错误提示不再夹带不完整的 XML。"
       ]
     },
     "zh-TW": {
-      "title": "提交檢閱與差異字型大小調整",
+      "title": "準確識別遠端更新與修復 SSL 狀態檢查",
       "items": [
-        "提交後保留結果，不再自動返回工作區。",
-        "提交清單支援還原預覽、檔案追溯與雙擊比對，不支援的操作直接隱藏。",
-        "差異字型大小可透過「− / +」在 10–28px 間調整，跨檢視及重新啟動後保留設定。"
+        "根據實際檔案和屬性變更提示更新，不再把本機已有的提交計入待更新記錄。",
+        "遠端狀態檢查正確使用已儲存的伺服器 TLS 和憑證設定。",
+        "分別顯示檢查失敗與沒有更新，SVN 錯誤訊息不再夾帶不完整的 XML。"
       ]
     },
     "ja": {
-      "title": "コミットの確認と差分の文字サイズ調整",
+      "title": "リモート更新の正確な検出と SSL 状態確認の修正",
       "items": [
-        "コミット後も結果を表示し、ワークスペースへ自動で戻らないようにしました。",
-        "コミット一覧で復元範囲の確認、ファイル履歴、ダブルクリックによる差分表示に対応し、利用できない操作を非表示にします。",
-        "差分の文字サイズを − / + で 10–28px に調整でき、画面切り替えや再起動後も設定を保持します。"
+        "実際のファイルと属性の変更を検出し、ローカルに反映済みのコミットを更新対象から除外します。",
+        "リモート状態の確認に、保存済みのサーバー別 TLS と証明書の設定を適用します。",
+        "確認の失敗と更新なしを区別し、SVN エラーから不完全な XML を除きます。"
       ]
     },
     "ko": {
-      "title": "커밋 검토 및 차이 글꼴 크기 조절",
+      "title": "정확한 원격 업데이트 감지 및 SSL 상태 확인 수정",
       "items": [
-        "커밋 후 작업 공간으로 자동 이동하지 않고 결과를 계속 표시합니다.",
-        "커밋 목록에서 되돌리기 범위 미리보기, 파일 이력 및 두 번 클릭으로 비교를 지원하며 사용할 수 없는 작업은 숨깁니다.",
-        "− / + 버튼으로 차이 글꼴을 10–28px로 조절하고 화면 전환과 재시작 후에도 설정을 유지합니다."
+        "실제 파일 및 속성 변경을 감지하고 로컬에 이미 반영된 커밋은 업데이트 목록에서 제외합니다.",
+        "원격 상태 확인에 저장된 서버별 TLS 및 인증서 설정을 적용합니다.",
+        "확인 실패와 업데이트 없음을 구분하고 SVN 오류 메시지에서 불완전한 XML을 제거합니다."
       ]
     }
   }
