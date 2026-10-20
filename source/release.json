@@ -1,48 +1,48 @@
 {
-  "tag": "v1.1.3",
-  "version": "1.1.3",
-  "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.3",
-  "publishedAt": "2026-10-18T16:53:55Z",
-  "sourceSha": "f33d7f1a74feac4d003cbf5aeb304115a464189f",
+  "tag": "v1.1.4",
+  "version": "1.1.4",
+  "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.4",
+  "publishedAt": "2026-10-20T08:55:29Z",
+  "sourceSha": "95bbf16886e9c079b49047d83b118a1243fa5950",
   "notes": {
     "en": {
-      "title": "More reliable releases and clearer documentation",
+      "title": "Commit review and adjustable diff text",
       "items": [
-        "Publish only after checks and packaging succeed on all four desktop targets, with nine distribution files verified.",
-        "Improve macOS DMG build retries, Windows version preparation, and release metadata validation.",
-        "Expand illustrated guides and language-matched screenshots; synchronize website content and captures from the published source."
+        "Keep commit output visible after committing instead of returning automatically to Workspace.",
+        "Revert with an impact preview, open file history, or double-click a commit file to compare; hide unsupported actions.",
+        "Adjust diff text with minus/plus buttons from 10 to 28 pixels and remember the size across views and restarts."
       ]
     },
     "zh-CN": {
-      "title": "更可靠的发布，更清楚的文档",
+      "title": "提交审阅与差异字号调节",
       "items": [
-        "四个桌面目标全部通过检查与打包后发布，并校验九个分发文件。",
-        "改进 macOS DMG 构建重试、Windows 版本准备与发布元数据校验。",
-        "扩充图文指南及对应语言截图，官网内容与截图随已发布源码同步。"
+        "提交后保留结果，不再自动返回工作区。",
+        "提交列表支持还原预览、文件追溯与双击对比，不支持的操作直接隐藏。",
+        "差异字号支持通过「− / +」在 10–28px 间调整，跨视图及重启后保留设置。"
       ]
     },
     "zh-TW": {
-      "title": "更可靠的發布，更清楚的文件",
+      "title": "提交檢閱與差異字型大小調整",
       "items": [
-        "四個桌面目標全部通過檢查與打包後發布，並驗證九個散布檔案。",
-        "改善 macOS DMG 建置重試、Windows 版本準備與發布中繼資料驗證。",
-        "擴充圖文指南與對應語言截圖，官網內容與截圖隨已發布原始碼同步。"
+        "提交後保留結果，不再自動返回工作區。",
+        "提交清單支援還原預覽、檔案追溯與雙擊比對，不支援的操作直接隱藏。",
+        "差異字型大小可透過「− / +」在 10–28px 間調整，跨檢視及重新啟動後保留設定。"
       ]
     },
     "ja": {
-      "title": "リリースの信頼性とドキュメントを改善",
+      "title": "コミットの確認と差分の文字サイズ調整",
       "items": [
-        "4つのデスクトップ環境すべてで検証とパッケージ作成が成功し、9つの配布ファイルを確認してから公開します。",
-        "macOS DMG ビルドの再試行、Windows でのバージョン更新、リリース情報の検証を改善しました。",
-        "図解ガイドと言語に対応するスクリーンショットを拡充し、公開済みソースに合わせて公式サイトを同期します。"
+        "コミット後も結果を表示し、ワークスペースへ自動で戻らないようにしました。",
+        "コミット一覧で復元範囲の確認、ファイル履歴、ダブルクリックによる差分表示に対応し、利用できない操作を非表示にします。",
+        "差分の文字サイズを − / + で 10–28px に調整でき、画面切り替えや再起動後も設定を保持します。"
       ]
     },
     "ko": {
-      "title": "더 안정적인 릴리스와 명확한 문서",
+      "title": "커밋 검토 및 차이 글꼴 크기 조절",
       "items": [
-        "네 가지 데스크톱 대상에서 검사와 패키징을 모두 통과하고 배포 파일 9개를 검증한 후 공개합니다.",
-        "macOS DMG 빌드 재시도, Windows 버전 준비 및 릴리스 메타데이터 검증을 개선했습니다.",
-        "그림 가이드와 언어별 스크린샷을 보강하고, 공개된 소스에 맞춰 웹사이트 콘텐츠와 스크린샷을 동기화합니다."
+        "커밋 후 작업 공간으로 자동 이동하지 않고 결과를 계속 표시합니다.",
+        "커밋 목록에서 되돌리기 범위 미리보기, 파일 이력 및 두 번 클릭으로 비교를 지원하며 사용할 수 없는 작업은 숨깁니다.",
+        "− / + 버튼으로 차이 글꼴을 10–28px로 조절하고 화면 전환과 재시작 후에도 설정을 유지합니다."
       ]
     }
   }
