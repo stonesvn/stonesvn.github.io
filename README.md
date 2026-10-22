@@ -14,7 +14,7 @@
 - 截图切换、语言导航：`script.js`
 - 根入口的浏览器语言识别：`detect-language.js`
 
-修改源文件后运行 `node --test source/releases.test.cjs` 和 `node build.mjs`。提交生成的根入口、五种语言目录、robots.txt 和 sitemap.xml。源模板带有 noindex，生成页面移除此标记。
+修改源文件后运行 `node --test source/releases.test.cjs`、`node --test source/release-history.test.mjs` 和 `node build.mjs`。提交生成的根入口、五种语言目录、robots.txt 和 sitemap.xml。源模板带有 noindex，生成页面移除此标记。
 
 本地预览：在此目录运行 `python3 -m http.server 8088 --bind 127.0.0.1`。
 
@@ -32,7 +32,7 @@
 
 应用仓库的 `Stable Release` 在四个平台检查和打包成功后才打标签并发布。本仓库 `Sync Release and Deploy` 每 5 分钟检查 Latest 正式版，有新版本才更新；GitHub 定时任务可能延迟。可在本仓库 Actions 手动运行立即同步，无需重发版本。任务无变更时跳过依赖安装、截图和部署。若前一次部署失败，下次定时检查会重新部署，即使更新摘要已经提交；截图不必重复生成。
 
-`source/release.json` 由流水线生成，记录版本、公开时间、源码 SHA 和五种语言摘要。`build.mjs` 把更新说明与版本结构化数据写入静态 HTML，禁用 JavaScript 时也能阅读。截图地址附带源码 SHA，主题切换同样保留该缓存标识。
+`source/release.json` 由流水线生成，记录版本、公开时间、源码 SHA 和五种语言摘要。`source/release-history.mjs` 从 GitHub 获取最近 5 个已发布的正式版本，按发布时间倒序读取各标签的五语摘要，生成 `source/release-history.json`；v1.1.2 沿用固定提交的兼容摘要。`build.mjs` 将最近 5 个版本渲染为纵向时间线，展示版本号、发布日期、更新内容和完整说明链接，并写入当前版本的结构化数据，禁用 JavaScript 时也能阅读。截图地址附带源码 SHA，主题切换同样保留该缓存标识。
 
 摘要源文件位于应用仓库 `docs/releases/vX.Y.Z.website.json`；截图脚本为 `scripts/capture-website.cjs`，使用 Playwright Chromium 和 `docs/images/workspace-demo.js` 的虚构数据，截图脚本和浏览器依赖也取自发布标签，从固定源码渲染 1440×900 截图（v1.1.2 使用固定提交的兼容脚本），不连接真实工作副本。每种语言包含浅色工作区、深色工作区和属性页，共 15 张。
 

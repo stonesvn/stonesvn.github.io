@@ -2,6 +2,7 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {buildGuides,guideSection,guideSitemap} from './source/build-guides.mjs';
+import {historyEntries} from './source/release-history.mjs';
 const directory=path.dirname(fileURLToPath(import.meta.url));
 const template=await readFile(path.join(directory,'source/template.html'),'utf8');
 const translations=JSON.parse(await readFile(path.join(directory,'source/translations.json'),'utf8'));
@@ -9,6 +10,7 @@ const origin='https://stonesvn.github.io';
 let release;
 try { release=JSON.parse(await readFile(path.join(directory,'source/release.json'),'utf8')); } catch(error) { if(error.code!=='ENOENT')throw error; }
 if(release && (!/^v[0-9]+\.[0-9]+\.[0-9]+$/.test(release.tag)||! /^[a-f0-9]{40}$/.test(release.sourceSha)))throw new Error('Invalid release manifest');
+const history=release?historyEntries(release,JSON.parse(await readFile(path.join(directory,'source/release-history.json'),'utf8'))):[];
 const languages=['en','zh-CN','zh-TW','ja','ko'];
 const locales={'zh-CN':'zh_CN','zh-TW':'zh_TW',en:'en_US',ja:'ja_JP',ko:'ko_KR'};
 const names={'zh-CN':'简体中文','zh-TW':'繁體中文',en:'English',ja:'日本語',ko:'한국어'};
@@ -43,9 +45,12 @@ function render(lang){
  if(release){
   const headings={en:'What’s new','zh-CN':'最新更新','zh-TW':'最新更新',ja:'最新の更新',ko:'최신 업데이트'};
   const details={en:'Full release notes','zh-CN':'完整更新说明','zh-TW':'完整更新說明',ja:'更新内容の詳細',ko:'전체 릴리스 노트'};
-  const notes=release.notes[lang];
-  if(!notes || !notes.items?.length)throw new Error(`Missing release notes: ${lang}`);
-  const section=`<section class="section container release-history" id="release-notes"><p class="eyebrow">${escape(headings[lang])} · ${escape(release.tag)}</p><h2>${escape(notes.title)}</h2><time datetime="${escape(release.publishedAt)}">${escape(release.publishedAt.slice(0,10))}</time><ul>${notes.items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul><a class="text-link" href="${escape(release.url)}">${escape(details[lang])} ↗</a></section>`;
+  const latestLabels={en:'Latest','zh-CN':'最新版本','zh-TW':'最新版本',ja:'最新バージョン',ko:'최신 버전'};
+  const entries=history.map((entry,index)=>{
+   const notes=entry.notes[lang];
+   return `<li class="release-entry${index===0?' is-latest':''}"><div class="release-meta"><a class="release-version" href="${escape(entry.url)}">${escape(entry.tag)}</a><time datetime="${escape(entry.publishedAt)}">${escape(entry.publishedAt.slice(0,10))}</time>${index===0?`<span class="release-latest">${escape(latestLabels[lang])}</span>`:''}</div><article class="release-content" aria-labelledby="release-${escape(entry.tag)}"><h3 id="release-${escape(entry.tag)}">${escape(notes.title)}</h3><ul>${notes.items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul><a class="text-link" href="${escape(entry.url)}">${escape(details[lang])} ↗</a></article></li>`;
+  }).join('');
+  const section=`<section class="section container release-history" id="release-notes" aria-labelledby="release-heading"><h2 id="release-heading">${escape(headings[lang])}</h2><ol class="release-timeline" role="list">${entries}</ol></section>`;
   html=html.replace('<section class="faq-section',`${section}<section class="faq-section`);
   html=html.replace(/(<span data-release-label data-release-template="([^"]*)">)[^<]*(<\/span>)/g,(_,open,format,close)=>open+format.replace('{version}',escape(release.tag))+close);
   html=html.replace(/(data-release-link href=")[^"]*(")/g,`$1${escape(release.url)}$2`);

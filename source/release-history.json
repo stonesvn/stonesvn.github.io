@@ -1,0 +1,247 @@
+[
+  {
+    "tag": "v1.1.6",
+    "version": "1.1.6",
+    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.6",
+    "publishedAt": "2026-10-22T07:34:22Z",
+    "notes": {
+      "en": {
+        "title": "Review incoming changes and update results",
+        "items": [
+          "Browse incoming revisions and changed files; filter by status or path, group by directory, and copy paths.",
+          "Keep the actual files changed by an update and compare their before/after revisions, with conflict and completion details.",
+          "Refresh local state before checking remote history in the background. On macOS, reopen the preserved workspace from the Dock after closing the window."
+        ]
+      },
+      "zh-CN": {
+        "title": "审阅待更新内容与本次更新结果",
+        "items": [
+          "查看待更新版本及变更文件，支持状态筛选、路径搜索、目录分组和复制路径。",
+          "更新后保留实际变更文件，可比较更新前后版本，并查看冲突与完成详情。",
+          "先刷新本地状态，再在后台检查远端历史；macOS 关闭窗口后可从 Dock 重新打开保留的工作区。"
+        ]
+      },
+      "zh-TW": {
+        "title": "檢閱待更新內容與本次更新結果",
+        "items": [
+          "查看待更新版本與變更檔案，支援狀態篩選、路徑搜尋、目錄分組及複製路徑。",
+          "更新後保留實際變更檔案，可比較更新前後版本，並查看衝突與完成詳情。",
+          "先重新整理本機狀態，再於背景檢查遠端歷史；macOS 關閉視窗後可從 Dock 重新開啟保留的工作區。"
+        ]
+      },
+      "ja": {
+        "title": "更新前後の変更を確認",
+        "items": [
+          "受信リビジョンと変更ファイルを確認し、状態やパスで絞り込み、ディレクトリ別の表示やパスのコピーができます。",
+          "更新で実際に変更されたファイルを保持し、更新前後のリビジョンを比較できます。競合や完了情報も表示します。",
+          "ローカル状態の更新後に、リモート履歴をバックグラウンドで確認します。macOS ではウィンドウを閉じても作業状態を保持し、Dock から再表示できます。"
+        ]
+      },
+      "ko": {
+        "title": "받을 변경 사항과 업데이트 결과 검토",
+        "items": [
+          "받을 리비전과 변경 파일을 확인하고 상태 및 경로 필터, 디렉터리별 보기, 경로 복사를 사용할 수 있습니다.",
+          "업데이트로 실제 변경된 파일을 유지하고 업데이트 전후 리비전을 비교하며 충돌과 완료 정보를 확인할 수 있습니다.",
+          "로컬 상태를 새로 고친 뒤 원격 기록을 백그라운드에서 확인합니다. macOS에서는 창을 닫아도 작업 상태를 유지하고 Dock에서 다시 열 수 있습니다."
+        ]
+      }
+    }
+  },
+  {
+    "tag": "v1.1.5",
+    "version": "1.1.5",
+    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.5",
+    "publishedAt": "2026-10-20T12:24:00Z",
+    "notes": {
+      "en": {
+        "title": "Accurate incoming updates and SSL status checks",
+        "items": [
+          "Detect real incoming file and property changes without counting commits already present locally.",
+          "Reuse saved server TLS and certificate settings during remote status checks.",
+          "Show failed checks separately from no updates, and keep partial XML out of SVN error messages."
+        ]
+      },
+      "zh-CN": {
+        "title": "准确识别远端更新与修复 SSL 状态检查",
+        "items": [
+          "根据实际文件和属性变化提示更新，不再把本地已有的提交计入待更新记录。",
+          "远端状态检查正确使用已保存的服务器 TLS 和证书设置。",
+          "检查失败与没有更新分别显示，SVN 错误提示不再夹带不完整的 XML。"
+        ]
+      },
+      "zh-TW": {
+        "title": "準確識別遠端更新與修復 SSL 狀態檢查",
+        "items": [
+          "根據實際檔案和屬性變更提示更新，不再把本機已有的提交計入待更新記錄。",
+          "遠端狀態檢查正確使用已儲存的伺服器 TLS 和憑證設定。",
+          "分別顯示檢查失敗與沒有更新，SVN 錯誤訊息不再夾帶不完整的 XML。"
+        ]
+      },
+      "ja": {
+        "title": "リモート更新の正確な検出と SSL 状態確認の修正",
+        "items": [
+          "実際のファイルと属性の変更を検出し、ローカルに反映済みのコミットを更新対象から除外します。",
+          "リモート状態の確認に、保存済みのサーバー別 TLS と証明書の設定を適用します。",
+          "確認の失敗と更新なしを区別し、SVN エラーから不完全な XML を除きます。"
+        ]
+      },
+      "ko": {
+        "title": "정확한 원격 업데이트 감지 및 SSL 상태 확인 수정",
+        "items": [
+          "실제 파일 및 속성 변경을 감지하고 로컬에 이미 반영된 커밋은 업데이트 목록에서 제외합니다.",
+          "원격 상태 확인에 저장된 서버별 TLS 및 인증서 설정을 적용합니다.",
+          "확인 실패와 업데이트 없음을 구분하고 SVN 오류 메시지에서 불완전한 XML을 제거합니다."
+        ]
+      }
+    }
+  },
+  {
+    "tag": "v1.1.4",
+    "version": "1.1.4",
+    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.4",
+    "publishedAt": "2026-10-20T08:55:29Z",
+    "notes": {
+      "en": {
+        "title": "Commit review and adjustable diff text",
+        "items": [
+          "Keep commit output visible after committing instead of returning automatically to Workspace.",
+          "Revert with an impact preview, open file history, or double-click a commit file to compare; hide unsupported actions.",
+          "Adjust diff text with minus/plus buttons from 10 to 28 pixels and remember the size across views and restarts."
+        ]
+      },
+      "zh-CN": {
+        "title": "提交审阅与差异字号调节",
+        "items": [
+          "提交后保留结果，不再自动返回工作区。",
+          "提交列表支持还原预览、文件追溯与双击对比，不支持的操作直接隐藏。",
+          "差异字号支持通过「− / +」在 10–28px 间调整，跨视图及重启后保留设置。"
+        ]
+      },
+      "zh-TW": {
+        "title": "提交檢閱與差異字型大小調整",
+        "items": [
+          "提交後保留結果，不再自動返回工作區。",
+          "提交清單支援還原預覽、檔案追溯與雙擊比對，不支援的操作直接隱藏。",
+          "差異字型大小可透過「− / +」在 10–28px 間調整，跨檢視及重新啟動後保留設定。"
+        ]
+      },
+      "ja": {
+        "title": "コミットの確認と差分の文字サイズ調整",
+        "items": [
+          "コミット後も結果を表示し、ワークスペースへ自動で戻らないようにしました。",
+          "コミット一覧で復元範囲の確認、ファイル履歴、ダブルクリックによる差分表示に対応し、利用できない操作を非表示にします。",
+          "差分の文字サイズを − / + で 10–28px に調整でき、画面切り替えや再起動後も設定を保持します。"
+        ]
+      },
+      "ko": {
+        "title": "커밋 검토 및 차이 글꼴 크기 조절",
+        "items": [
+          "커밋 후 작업 공간으로 자동 이동하지 않고 결과를 계속 표시합니다.",
+          "커밋 목록에서 되돌리기 범위 미리보기, 파일 이력 및 두 번 클릭으로 비교를 지원하며 사용할 수 없는 작업은 숨깁니다.",
+          "− / + 버튼으로 차이 글꼴을 10–28px로 조절하고 화면 전환과 재시작 후에도 설정을 유지합니다."
+        ]
+      }
+    }
+  },
+  {
+    "tag": "v1.1.3",
+    "version": "1.1.3",
+    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.3",
+    "publishedAt": "2026-10-18T16:53:55Z",
+    "notes": {
+      "en": {
+        "title": "More reliable releases and clearer documentation",
+        "items": [
+          "Publish only after checks and packaging succeed on all four desktop targets, with nine distribution files verified.",
+          "Improve macOS DMG build retries, Windows version preparation, and release metadata validation.",
+          "Expand illustrated guides and language-matched screenshots; synchronize website content and captures from the published source."
+        ]
+      },
+      "zh-CN": {
+        "title": "更可靠的发布，更清楚的文档",
+        "items": [
+          "四个桌面目标全部通过检查与打包后发布，并校验九个分发文件。",
+          "改进 macOS DMG 构建重试、Windows 版本准备与发布元数据校验。",
+          "扩充图文指南及对应语言截图，官网内容与截图随已发布源码同步。"
+        ]
+      },
+      "zh-TW": {
+        "title": "更可靠的發布，更清楚的文件",
+        "items": [
+          "四個桌面目標全部通過檢查與打包後發布，並驗證九個散布檔案。",
+          "改善 macOS DMG 建置重試、Windows 版本準備與發布中繼資料驗證。",
+          "擴充圖文指南與對應語言截圖，官網內容與截圖隨已發布原始碼同步。"
+        ]
+      },
+      "ja": {
+        "title": "リリースの信頼性とドキュメントを改善",
+        "items": [
+          "4つのデスクトップ環境すべてで検証とパッケージ作成が成功し、9つの配布ファイルを確認してから公開します。",
+          "macOS DMG ビルドの再試行、Windows でのバージョン更新、リリース情報の検証を改善しました。",
+          "図解ガイドと言語に対応するスクリーンショットを拡充し、公開済みソースに合わせて公式サイトを同期します。"
+        ]
+      },
+      "ko": {
+        "title": "더 안정적인 릴리스와 명확한 문서",
+        "items": [
+          "네 가지 데스크톱 대상에서 검사와 패키징을 모두 통과하고 배포 파일 9개를 검증한 후 공개합니다.",
+          "macOS DMG 빌드 재시도, Windows 버전 준비 및 릴리스 메타데이터 검증을 개선했습니다.",
+          "그림 가이드와 언어별 스크린샷을 보강하고, 공개된 소스에 맞춰 웹사이트 콘텐츠와 스크린샷을 동기화합니다."
+        ]
+      }
+    }
+  },
+  {
+    "tag": "v1.1.2",
+    "version": "1.1.2",
+    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.2",
+    "publishedAt": "2026-10-18T14:07:01Z",
+    "notes": {
+      "en": {
+        "title": "More control over everyday working-copy changes",
+        "items": [
+          "Resolve conflicts from Workspace or Properties; review and commit the result separately.",
+          "Rename and move versioned files and directories while preserving history.",
+          "Preview the affected tree before recursive revert, and restore clean, complete directories to a historical revision as local changes.",
+          "Add unversioned items, cancel plain scheduled additions while keeping local files, and relocate working copies within the same repository."
+        ]
+      },
+      "zh-CN": {
+        "title": "日常工作副本操作，更清楚也更顺手",
+        "items": [
+          "在工作区或属性页解决冲突，审阅后另行提交。",
+          "重命名与移动受控文件和目录，同时保留历史。",
+          "递归还原前预览影响范围；将干净、完整的目录恢复到历史版本，作为本地变更。",
+          "添加未跟踪项目、取消普通新增计划并保留本地文件，以及更新同一仓库的地址。"
+        ]
+      },
+      "zh-TW": {
+        "title": "日常工作副本操作，更清楚也更順手",
+        "items": [
+          "在工作區或屬性頁解決衝突，審閱後另行提交。",
+          "重新命名與移動受控檔案和目錄，同時保留歷史。",
+          "遞迴還原前預覽影響範圍；將乾淨、完整的目錄恢復到歷史版本，作為本機變更。",
+          "加入未追蹤項目、取消一般新增排程並保留本機檔案，以及更新同一儲存庫的位址。"
+        ]
+      },
+      "ja": {
+        "title": "日々の作業コピー操作を、より確実に",
+        "items": [
+          "ワークスペースやプロパティから競合を解決し、結果を確認して別途コミットできます。",
+          "履歴を保持したまま、管理対象のファイルやディレクトリを名前変更・移動できます。",
+          "再帰的な取り消しの前に影響範囲を確認し、クリーンで完全なディレクトリを過去のリビジョンへローカル変更として復元できます。",
+          "未管理項目の追加、ローカルファイルを残した通常の追加予定の取り消し、同一リポジトリ内の URL 変更に対応しました。"
+        ]
+      },
+      "ko": {
+        "title": "일상적인 작업 사본 변경을 더 명확하게",
+        "items": [
+          "작업 공간이나 속성에서 충돌을 해결하고 결과를 검토한 후 별도로 커밋할 수 있습니다.",
+          "기록을 유지하면서 버전 관리 파일과 디렉터리의 이름을 바꾸거나 이동할 수 있습니다.",
+          "재귀 되돌리기 전에 영향 범위를 확인하고, 변경이 없고 완전한 디렉터리를 과거 리비전으로 복원해 로컬 변경으로 검토할 수 있습니다.",
+          "미추적 항목 추가, 로컬 파일을 유지하는 일반 추가 예약 취소, 동일 저장소의 주소 변경을 지원합니다."
+        ]
+      }
+    }
+  }
+]

@@ -124,10 +124,16 @@ jobs:
           # Backfill only for tags published before automation was introduced.
           if [ ! -f "$notes" ]; then cp "../$TOOLS_DIRECTORY/$notes" "$notes"; fi
           node "../$TOOLS_DIRECTORY/scripts/website-release.cjs" sync "$RELEASE_TAG" "$RUNNER_TEMP/release.json" "$(git rev-parse HEAD)" ../source/release.json
+      - name: Synchronize the five latest stable release summaries
+        if: steps.release.outputs.sync == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node source/release-history.mjs
       - name: Build static website
         if: steps.release.outputs.deploy == 'true'
         run: |
           node --test source/releases.test.cjs
+          node --test source/release-history.test.mjs
           node build.mjs
       - name: Validate localized pages and screenshots
         if: steps.release.outputs.sync == 'true'
@@ -144,7 +150,7 @@ jobs:
           test "$(gh api repos/firzen/StoneSVN/releases/latest --jq .tag_name)" = "$RELEASE_TAG"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/screenshots source/release.json index.html en zh-CN zh-TW ja ko sitemap.xml robots.txt
+          git add assets/screenshots source/release.json source/release-history.json index.html en zh-CN zh-TW ja ko sitemap.xml robots.txt
           if ! git diff --cached --quiet; then
             git commit -m "Sync $RELEASE_TAG release notes and localized screenshots"
             git push origin HEAD:main

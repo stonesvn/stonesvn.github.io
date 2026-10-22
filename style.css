@@ -5,4 +5,36 @@
 .ignore-section{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:70px;padding-block:88px;border-bottom:1px solid var(--line)}.ignore-copy h2{font-size:36px;line-height:1.45}.ignore-copy h2 span{color:var(--blue)}.ignore-copy p:not(.eyebrow){font-size:14px;line-height:1.95;color:var(--muted);margin:20px 0}.ignore-copy .ignore-intro{color:var(--ink)!important;font-size:16px!important}.ignore-copy .text-link{display:inline-block;margin-top:6px}.ignore-example{background:#fff;border:1px solid #cfdae5;border-radius:12px;padding:24px;box-shadow:0 16px 44px -24px #284d6d3b}.rule-header{display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:13px;font-weight:600;padding-bottom:20px}.rule-badge{background:#edf4f0;color:#4b755d;border-radius:20px;padding:6px 10px;font-size:10px;font-weight:500}.rule-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:19px 0;border-top:1px solid #e7edf2}.rule-row code{color:var(--blue);font-size:14px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.rule-row>span{font-size:11px;color:var(--muted)}.rule-footnote{font-size:11px;line-height:1.85;margin:12px 0 0;color:#7b8d9c}.hero .intro{max-width:820px;margin-inline:auto}.hero h1{font-size:clamp(44px,5vw,70px)}html[lang=en] .hero h1{font-size:clamp(40px,4.9vw,68px)}@media(max-width:900px){.ignore-section{gap:35px}.ignore-copy h2{font-size:30px}.ignore-example{padding:20px}.rule-row{align-items:flex-start;flex-direction:column}.rule-badge{font-size:9px}}@media(max-width:640px){.ignore-section{grid-template-columns:1fr;gap:28px;padding-block:50px}.ignore-copy h2{font-size:29px}.ignore-copy .ignore-intro{font-size:14px!important}.ignore-copy p:not(.eyebrow){font-size:13px}.hero .intro{max-width:350px}.hero h1{font-size:42px}html[lang=en] .hero h1{font-size:39px}html[lang=ja] .hero h1,html[lang=ko] .hero h1{font-size:36px}.rule-row{flex-direction:row}.rule-badge{font-size:10px}}
 .maintenance-note{margin:30px 0 0}.features h3{line-height:1.5}
 
-.release-history{border-top:1px solid var(--line,#dfe4ec)}.release-history h2{font-size:clamp(1.8rem,3vw,2.6rem);margin:12px 0}.release-history time{color:var(--muted,#596779);font-size:.9rem}.release-history ul{padding-left:1.3rem;max-width:900px;line-height:1.85;margin:24px 0}.release-history li+li{margin-top:8px}
+/* Recent releases: version rail and connected timeline. */
+.release-history{border-top:1px solid var(--line)}
+.release-history>h2{margin:0 0 44px}
+.release-timeline{list-style:none;padding:0;margin:0}
+.release-entry{position:relative;display:grid;grid-template-columns:160px minmax(0,1fr);gap:48px;padding-bottom:40px}
+.release-entry::before{content:'';position:absolute;left:184px;top:13px;bottom:-13px;width:1px;background:var(--line)}
+.release-entry::after{content:'';position:absolute;left:179px;top:8px;width:11px;height:11px;border:2px solid #a4b8c9;border-radius:50%;background:var(--paper)}
+.release-entry:last-child{padding-bottom:0}
+.release-entry:last-child::before{display:none}
+.release-entry.is-latest::after{border-color:var(--blue);background:var(--blue);box-shadow:0 0 0 5px #305f8510}
+.release-meta{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding-top:1px}
+.release-version{font-size:20px;font-weight:700;letter-spacing:-.5px;color:var(--blue)}
+.release-version:hover{text-decoration:underline}
+.release-meta time{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.release-latest{font-size:10px;font-weight:600;color:var(--blue);background:#e7eef5;border:1px solid #d7e2ec;border-radius:20px;padding:4px 9px}
+.release-content{padding:0 0 34px;border-bottom:1px solid var(--line)}
+.release-entry:last-child .release-content{border-bottom:0;padding-bottom:0}
+.release-content h3{font-size:22px;line-height:1.5;letter-spacing:-.4px;margin:0 0 16px}
+.release-content ul{padding-left:1.2rem;line-height:1.9;margin:0 0 18px;color:var(--muted);font-size:14px}
+.release-content li+li{margin-top:8px}
+@media(max-width:640px){
+ .release-history>h2{margin-bottom:32px}
+ .release-entry{grid-template-columns:minmax(0,1fr);gap:16px;padding-left:26px;padding-bottom:32px}
+ .release-entry::before{left:4px;top:11px;bottom:-11px}
+ .release-entry::after{left:-1px;top:6px}
+ .release-meta{flex-direction:row;align-items:center;flex-wrap:wrap;gap:10px 12px;padding-top:0}
+ .release-version{font-size:17px}
+ .release-meta time{font-size:11px}
+ .release-latest{font-size:9px;padding:3px 8px}
+ .release-content{padding-bottom:28px}
+ .release-content h3{font-size:19px;margin-bottom:12px}
+ .release-content ul{font-size:13px}
+}
