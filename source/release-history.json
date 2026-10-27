@@ -1,5 +1,48 @@
 [
   {
+    "tag": "v1.1.8",
+    "version": "1.1.8",
+    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.8",
+    "publishedAt": "2026-10-27T03:00:04Z",
+    "notes": {
+      "en": {
+        "title": "Select diff content and open files easily",
+        "items": [
+          "Select and copy diff content without line numbers or gutter markers, while preserving symbols in the file itself.",
+          "Open local files directly from small icons in the workspace file list and preview, or beside the comparison file path."
+        ]
+      },
+      "zh-CN": {
+        "title": "更方便地选择对比正文与打开文件",
+        "items": [
+          "选择和复制对比正文时排除行号及左侧标记，保留正文自身的符号。",
+          "通过工作区文件列表、预览及对比文件路径旁的小图标直接打开本地文件。"
+        ]
+      },
+      "zh-TW": {
+        "title": "更方便地選取差異內容與開啟檔案",
+        "items": [
+          "選取與複製差異內容時排除行號及左側標記，保留檔案內容本身的符號。",
+          "透過工作區檔案清單、預覽及比較檔案路徑旁的小圖示直接開啟本機檔案。"
+        ]
+      },
+      "ja": {
+        "title": "差分の選択とファイルを開く操作を改善",
+        "items": [
+          "差分の選択・コピーから行番号と左端の記号を除外し、ファイル内容の記号は保持します。",
+          "ワークスペースのファイル一覧とプレビュー、比較中のファイルパスの横にある小さなアイコンからローカルファイルを直接開けます。"
+        ]
+      },
+      "ko": {
+        "title": "차이 내용 선택 및 파일 열기 개선",
+        "items": [
+          "차이 내용을 선택하거나 복사할 때 줄 번호와 왼쪽 표시를 제외하고 파일 내용의 기호는 유지합니다.",
+          "작업 공간 파일 목록과 미리 보기, 비교 중인 파일 경로 옆의 작은 아이콘으로 로컬 파일을 바로 엽니다."
+        ]
+      }
+    }
+  },
+  {
     "tag": "v1.1.7",
     "version": "1.1.7",
     "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.7",
@@ -182,54 +225,6 @@
           "커밋 후 작업 공간으로 자동 이동하지 않고 결과를 계속 표시합니다.",
           "커밋 목록에서 되돌리기 범위 미리보기, 파일 이력 및 두 번 클릭으로 비교를 지원하며 사용할 수 없는 작업은 숨깁니다.",
           "− / + 버튼으로 차이 글꼴을 10–28px로 조절하고 화면 전환과 재시작 후에도 설정을 유지합니다."
-        ]
-      }
-    }
-  },
-  {
-    "tag": "v1.1.3",
-    "version": "1.1.3",
-    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.3",
-    "publishedAt": "2026-10-18T16:53:55Z",
-    "notes": {
-      "en": {
-        "title": "More reliable releases and clearer documentation",
-        "items": [
-          "Publish only after checks and packaging succeed on all four desktop targets, with nine distribution files verified.",
-          "Improve macOS DMG build retries, Windows version preparation, and release metadata validation.",
-          "Expand illustrated guides and language-matched screenshots; synchronize website content and captures from the published source."
-        ]
-      },
-      "zh-CN": {
-        "title": "更可靠的发布，更清楚的文档",
-        "items": [
-          "四个桌面目标全部通过检查与打包后发布，并校验九个分发文件。",
-          "改进 macOS DMG 构建重试、Windows 版本准备与发布元数据校验。",
-          "扩充图文指南及对应语言截图，官网内容与截图随已发布源码同步。"
-        ]
-      },
-      "zh-TW": {
-        "title": "更可靠的發布，更清楚的文件",
-        "items": [
-          "四個桌面目標全部通過檢查與打包後發布，並驗證九個散布檔案。",
-          "改善 macOS DMG 建置重試、Windows 版本準備與發布中繼資料驗證。",
-          "擴充圖文指南與對應語言截圖，官網內容與截圖隨已發布原始碼同步。"
-        ]
-      },
-      "ja": {
-        "title": "リリースの信頼性とドキュメントを改善",
-        "items": [
-          "4つのデスクトップ環境すべてで検証とパッケージ作成が成功し、9つの配布ファイルを確認してから公開します。",
-          "macOS DMG ビルドの再試行、Windows でのバージョン更新、リリース情報の検証を改善しました。",
-          "図解ガイドと言語に対応するスクリーンショットを拡充し、公開済みソースに合わせて公式サイトを同期します。"
-        ]
-      },
-      "ko": {
-        "title": "더 안정적인 릴리스와 명확한 문서",
-        "items": [
-          "네 가지 데스크톱 대상에서 검사와 패키징을 모두 통과하고 배포 파일 9개를 검증한 후 공개합니다.",
-          "macOS DMG 빌드 재시도, Windows 버전 준비 및 릴리스 메타데이터 검증을 개선했습니다.",
-          "그림 가이드와 언어별 스크린샷을 보강하고, 공개된 소스에 맞춰 웹사이트 콘텐츠와 스크린샷을 동기화합니다."
         ]
       }
     }
