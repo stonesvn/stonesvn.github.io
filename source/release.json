@@ -1,48 +1,43 @@
 {
-  "tag": "v1.1.6",
-  "version": "1.1.6",
-  "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.6",
-  "publishedAt": "2026-10-22T07:34:22Z",
-  "sourceSha": "60b55614d7351167d8e63ff7430cec9e5d4036db",
+  "tag": "v1.1.7",
+  "version": "1.1.7",
+  "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.7",
+  "publishedAt": "2026-10-27T01:45:45Z",
+  "sourceSha": "577ed333c9d316b1ececbaff718a6702c523d075",
   "notes": {
     "en": {
-      "title": "Review incoming changes and update results",
+      "title": "Load incoming revisions faster",
       "items": [
-        "Browse incoming revisions and changed files; filter by status or path, group by directory, and copy paths.",
-        "Keep the actual files changed by an update and compare their before/after revisions, with conflict and completion details.",
-        "Refresh local state before checking remote history in the background. On macOS, reopen the preserved workspace from the Dock after closing the window."
+        "Batch history requests for remote additions instead of querying each new file or directory separately.",
+        "Preserve per-node BASE revisions, switched subtree URLs, and revision limits; cover large additions and multilingual paths with SVN integration tests."
       ]
     },
     "zh-CN": {
-      "title": "审阅待更新内容与本次更新结果",
+      "title": "加快待更新版本加载",
       "items": [
-        "查看待更新版本及变更文件，支持状态筛选、路径搜索、目录分组和复制路径。",
-        "更新后保留实际变更文件，可比较更新前后版本，并查看冲突与完成详情。",
-        "先刷新本地状态，再在后台检查远端历史；macOS 关闭窗口后可从 Dock 重新打开保留的工作区。"
+        "批量查询远端新增内容的历史记录，避免为每个新增文件或目录单独发送请求。",
+        "保留各节点 BASE 版本、切换目录地址与版本数量限制，并通过 SVN 集成测试覆盖大量新增项及多语言路径。"
       ]
     },
     "zh-TW": {
-      "title": "檢閱待更新內容與本次更新結果",
+      "title": "加快待更新版本載入",
       "items": [
-        "查看待更新版本與變更檔案，支援狀態篩選、路徑搜尋、目錄分組及複製路徑。",
-        "更新後保留實際變更檔案，可比較更新前後版本，並查看衝突與完成詳情。",
-        "先重新整理本機狀態，再於背景檢查遠端歷史；macOS 關閉視窗後可從 Dock 重新開啟保留的工作區。"
+        "批次查詢遠端新增內容的歷史記錄，避免為每個新增檔案或目錄個別傳送請求。",
+        "保留各節點 BASE 版本、切換目錄位址與版本數量限制，並透過 SVN 整合測試涵蓋大量新增項目及多語言路徑。"
       ]
     },
     "ja": {
-      "title": "更新前後の変更を確認",
+      "title": "受信リビジョンの読み込みを高速化",
       "items": [
-        "受信リビジョンと変更ファイルを確認し、状態やパスで絞り込み、ディレクトリ別の表示やパスのコピーができます。",
-        "更新で実際に変更されたファイルを保持し、更新前後のリビジョンを比較できます。競合や完了情報も表示します。",
-        "ローカル状態の更新後に、リモート履歴をバックグラウンドで確認します。macOS ではウィンドウを閉じても作業状態を保持し、Dock から再表示できます。"
+        "リモートで追加されたファイルやディレクトリの履歴をまとめて取得し、個別のリクエストを削減します。",
+        "各ノードの BASE リビジョン、切り替えたディレクトリの URL、表示件数の制限を維持し、大量の追加と多言語パスを SVN 統合テストで確認します。"
       ]
     },
     "ko": {
-      "title": "받을 변경 사항과 업데이트 결과 검토",
+      "title": "받을 리비전 로딩 속도 개선",
       "items": [
-        "받을 리비전과 변경 파일을 확인하고 상태 및 경로 필터, 디렉터리별 보기, 경로 복사를 사용할 수 있습니다.",
-        "업데이트로 실제 변경된 파일을 유지하고 업데이트 전후 리비전을 비교하며 충돌과 완료 정보를 확인할 수 있습니다.",
-        "로컬 상태를 새로 고친 뒤 원격 기록을 백그라운드에서 확인합니다. macOS에서는 창을 닫아도 작업 상태를 유지하고 Dock에서 다시 열 수 있습니다."
+        "원격에서 추가된 파일과 디렉터리의 기록을 일괄 조회하여 개별 요청을 줄입니다.",
+        "각 노드의 BASE 리비전, 전환된 디렉터리 URL, 표시 개수 제한을 유지하고 대량 추가와 다국어 경로를 SVN 통합 테스트로 검증합니다."
       ]
     }
   }
