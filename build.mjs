@@ -1,6 +1,7 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {buildGuides,guideSection,guideSitemap} from './source/build-guides.mjs';
 import {historyEntries} from './source/release-history.mjs';
 const directory=path.dirname(fileURLToPath(import.meta.url));
@@ -10,6 +11,15 @@ const origin='https://stonesvn.github.io';
 let release;
 try { release=JSON.parse(await readFile(path.join(directory,'source/release.json'),'utf8')); } catch(error) { if(error.code!=='ENOENT')throw error; }
 if(release && (!/^v[0-9]+\.[0-9]+\.[0-9]+$/.test(release.tag)||! /^[a-f0-9]{40}$/.test(release.sourceSha)))throw new Error('Invalid release manifest');
+// Keep app provenance in the cache identifier while refreshing corrected
+// documentation fixtures without moving an immutable release tag.
+let screenshotVersion=release?.sourceSha;
+if(release){
+ try {
+  const fixture=await readFile(path.join(directory,'source/capture-fixtures',release.tag,'workspace-demo.js'));
+  screenshotVersion+=`-${createHash('sha256').update(fixture).digest('hex').slice(0,12)}`;
+ } catch(error) { if(error.code!=='ENOENT')throw error; }
+}
 const history=release?historyEntries(release,JSON.parse(await readFile(path.join(directory,'source/release-history.json'),'utf8'))):[];
 const languages=['en','zh-CN','zh-TW','ja','ko'];
 const locales={'zh-CN':'zh_CN','zh-TW':'zh_TW',en:'en_US',ja:'ja_JP',ko:'ko_KR'};
@@ -54,8 +64,8 @@ function render(lang){
   html=html.replace('<section class="faq-section',`${section}<section class="faq-section`);
   html=html.replace(/(<span data-release-label data-release-template="([^"]*)">)[^<]*(<\/span>)/g,(_,open,format,close)=>open+format.replace('{version}',escape(release.tag))+close);
   html=html.replace(/(data-release-link href=")[^"]*(")/g,`$1${escape(release.url)}$2`);
-  html=html.replace(/(\/assets\/screenshots\/[^" ]+\.png)/g,`$1?v=${release.sourceSha}`);
-  html=html.replace('id="workspace"',`id="workspace" data-release="${release.sourceSha}"`);
+  html=html.replace(/(\/assets\/screenshots\/[^" ]+\.png)/g,`$1?v=${screenshotVersion}`);
+  html=html.replace('id="workspace"',`id="workspace" data-release="${screenshotVersion}"`);
  }
  if(lang==='en')html=html.replace('</main>',`${guideSection}</main>`);
  return html;

@@ -36,6 +36,8 @@
 
 摘要源文件位于应用仓库 `docs/releases/vX.Y.Z.website.json`；截图脚本为 `scripts/capture-website.cjs`，使用 Playwright Chromium 和 `docs/images/workspace-demo.js` 的虚构数据，截图脚本和浏览器依赖也取自发布标签，从固定源码渲染 1440×900 截图（v1.1.2 使用固定提交的兼容脚本），不连接真实工作副本。每种语言包含浅色工作区、深色工作区和属性页，共 15 张。
 
+已发布版本的演示数据可在 `source/capture-fixtures/vX.Y.Z/workspace-demo.js` 中修正。同步任务仅覆盖对应标签的虚构演示数据，应用代码、截图脚本和浏览器依赖仍取自发布标签；旧版兼容路径保持不变。截图缓存标识保留应用源码 SHA，并追加演示数据摘要，使同一版本的截图修正能够刷新。
+
 官网使用本仓库自身的 GITHUB_TOKEN 提交生成内容，并通过 deploy-pages 显式部署，不需要 deploy key 或个人令牌。Pages 必须设置为 GitHub Actions 发布。部署包只包含公开静态资源，不包含源码检出目录或自动化工具。普通 main 推送也会触发部署；并发维护导致推送冲突时下一次运行重试，禁止强推。
 
 [GitHub 会停用 60 天没有仓库活动的公开仓库定时任务](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)。为保持长期自动同步，定时任务仅在官网连续 30 天无提交时创建一次空维护提交，不修改页面或触发部署。

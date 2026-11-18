@@ -118,6 +118,12 @@ jobs:
           npm run dev --prefix .capture-app -- --host 127.0.0.1 > "$RUNNER_TEMP/vite.log" 2>&1 &
           server=$!
           trap 'kill "$server" 2>/dev/null || true' EXIT
+          # Documentation-only fixture corrections keep the released UI,
+          # capture runner and browser dependencies pinned to their original tag.
+          fixture="source/capture-fixtures/$RELEASE_TAG/workspace-demo.js"
+          if [ -f "$fixture" ]; then
+            cp "$fixture" .capture-app/docs/images/workspace-demo.js
+          fi
           node "$TOOLS_DIRECTORY/scripts/capture-website.cjs"
           cd .capture-app
           notes="docs/releases/$RELEASE_TAG.website.json"
