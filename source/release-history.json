@@ -1,5 +1,58 @@
 [
   {
+    "tag": "v1.4.0",
+    "version": "1.4.0",
+    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.4.0",
+    "publishedAt": "2026-11-25T08:17:27Z",
+    "notes": {
+      "en": {
+        "title": "Export a revision's changes from the timeline",
+        "items": [
+          "Open a commit in Timeline and export only the paths changed in that revision, with repository-relative folders and file contents from the selected version.",
+          "Added or replaced nodes are exported in full; modified files and property-only directories keep that revision's state, while deletions, externals, and .svn metadata are skipped.",
+          "Choose a new destination in the existing save dialog. Existing folders are not overwritten and exports inside the working copy are rejected.",
+          "Large exports get a longer timeout and reuse in-app authentication and TLS prompts; failed exports remove incomplete directories without changing the working copy."
+        ]
+      },
+      "zh-CN": {
+        "title": "从时间线导出指定版本的变更",
+        "items": [
+          "在时间线打开提交记录，仅导出该版本涉及的路径；保留仓库相对目录结构，文件内容取自所选版本。",
+          "新增或替换的节点会完整导出，修改的文件与仅修改属性的目录保留该版本状态；已删除路径、外部引用和 .svn 元数据不会导出。",
+          "沿用现有保存对话框选择新目录；不会覆盖已有目录，也不允许导出到当前工作区内。",
+          "大仓库导出使用更长超时，并复用应用内的账号认证与 TLS 提示；失败时清理不完整目录，不改动工作副本。"
+        ]
+      },
+      "zh-TW": {
+        "title": "從時間軸匯出指定版本的變更",
+        "items": [
+          "在時間軸開啟提交記錄，僅匯出該版本涉及的路徑；保留儲存庫相對目錄結構，檔案內容取自所選版本。",
+          "新增或替換的節點會完整匯出，修改的檔案與僅修改屬性的目錄保留該版本狀態；已刪除路徑、外部參考與 .svn 中繼資料不會匯出。",
+          "沿用現存儲存對話方塊選擇新目錄；不會覆蓋已有目錄，也不允許匯出到目前工作區內。",
+          "大型儲存庫匯出使用更長逾時，並沿用應用程式內的帳號驗證與 TLS 提示；失敗時清除不完整目錄，不變動工作副本。"
+        ]
+      },
+      "ja": {
+        "title": "タイムラインから指定リビジョンの変更を書き出し",
+        "items": [
+          "タイムラインでコミットを開くと、そのリビジョンで変更されたパスのみを書き出せます。リポジトリ内の相対ディレクトリ構造を保持し、内容は選択したリビジョンのものを使用します。",
+          "追加・置換されたファイルやディレクトリは再帰的に書き出されます。変更ファイルとプロパティのみ変更されたディレクトリはそのリビジョンの状態で書き出され、削除済みパス、externals、.svn メタデータは対象外です。",
+          "既存の保存ダイアログで新しい宛先を選択します。既存ディレクトリは上書きされず、作業コピー内の宛先は拒否されます。",
+          "大規模な書き出しではタイムアウトを延長し、アプリ内の認証と TLS のプロンプトを再利用します。失敗時は不完全なディレクトリを削除し、作業コピーは変更しません。"
+        ]
+      },
+      "ko": {
+        "title": "타임라인에서 지정한 리비전의 변경 내용 내보내기",
+        "items": [
+          "타임라인에서 커밋을 열면 해당 리비전에서 변경된 경로만 내보낼 수 있습니다. 저장소 상대 디렉터리 구조를 유지하며 파일 내용은 선택한 리비전에서 가져옵니다.",
+          "추가되거나 대체된 노드는 전체를 내보냅니다. 수정된 파일과 속성만 변경된 디렉터리는 해당 리비전 상태로 내보내고, 삭제된 경로·externals·.svn 메타데이터는 제외합니다.",
+          "기존 저장 대화상자에서 새 대상을 선택합니다. 기존 디렉터리는 덮어쓰지 않으며 작업 사본 내부로의 내보내기는 거부됩니다.",
+          "큰 저장소에서는 제한 시간을 늘리고 앱 내 인증 및 TLS 프롬프트를 재사용합니다. 실패 시 불완전한 디렉터리를 정리하며 작업 사본은 변경하지 않습니다."
+        ]
+      }
+    }
+  },
+  {
     "tag": "v1.3.1",
     "version": "1.3.1",
     "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.3.1",
@@ -192,54 +245,6 @@
           "작업 공간에서 읽기 전용 충돌 미리보기를 제공합니다. 충돌 파일을 맨 위에 표시하고 두 번 클릭하여 비교 화면을 열며, 노란색 충돌 개수 배지를 표시합니다.",
           "속성 값과 파일 내용을 따로 검토하고 트리 충돌의 양쪽 작업을 표시합니다. 지원하지 않는 경우 수동으로 처리할 수 있습니다.",
           "업데이트 버튼에 수신할 리비전 수를 표시합니다. F5와 macOS Command-R로 새로 고칠 수 있으며 타임라인 리비전 열을 넓혔습니다."
-        ]
-      }
-    }
-  },
-  {
-    "tag": "v1.1.9",
-    "version": "1.1.9",
-    "url": "https://github.com/firzen/StoneSVN/releases/tag/v1.1.9",
-    "publishedAt": "2026-11-12T02:05:34Z",
-    "notes": {
-      "en": {
-        "title": "Open commit directories in the file manager",
-        "items": [
-          "Double-click directories in the commit change list to open them in Finder or the system file manager. Double-clicking files still opens their diff.",
-          "Preview working-copy diffs for Markdown and other detected text files even when SVN MIME metadata marks them as binary.",
-          "Delete selected items in the commit view after confirming the affected paths."
-        ]
-      },
-      "zh-CN": {
-        "title": "双击打开提交列表目录",
-        "items": [
-          "双击提交改动列表中的目录，通过 Finder 或系统文件浏览器打开；双击文件仍查看差异。",
-          "修复 Markdown 等文本文件被 SVN MIME 属性标记为二进制时无法预览工作副本差异的问题。",
-          "提交界面支持批量删除选中项，操作前确认受影响路径。"
-        ]
-      },
-      "zh-TW": {
-        "title": "按兩下開啟提交清單目錄",
-        "items": [
-          "按兩下提交變更清單中的目錄，透過 Finder 或系統檔案管理員開啟；按兩下檔案仍檢視差異。",
-          "修正 Markdown 等文字檔案被 SVN MIME 屬性標記為二進位時無法預覽工作副本差異的問題。",
-          "提交介面支援批次刪除選取項目，操作前確認受影響路徑。"
-        ]
-      },
-      "ja": {
-        "title": "コミット一覧のディレクトリを開く",
-        "items": [
-          "コミットの変更一覧でディレクトリをダブルクリックすると、Finder またはシステムのファイルマネージャーで開きます。ファイルのダブルクリックでは引き続き差分を表示します。",
-          "SVN の MIME 属性でバイナリに指定された Markdown などのテキストファイルでも、作業コピーの差分を表示できるようにしました。",
-          "コミット画面で選択した項目を、対象パスの確認後にまとめて削除できます。"
-        ]
-      },
-      "ko": {
-        "title": "커밋 목록의 디렉터리 열기",
-        "items": [
-          "커밋 변경 목록에서 디렉터리를 두 번 클릭하면 Finder 또는 시스템 파일 관리자에서 열립니다. 파일을 두 번 클릭하면 기존처럼 차이를 표시합니다.",
-          "SVN MIME 속성에서 바이너리로 지정된 Markdown 등 텍스트 파일도 작업 사본 차이를 미리 볼 수 있도록 수정했습니다.",
-          "커밋 화면에서 대상 경로를 확인한 후 선택한 항목을 일괄 삭제할 수 있습니다."
         ]
       }
     }
